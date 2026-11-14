@@ -4,6 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/lua/luajit64" />
+      <excludeFolder url="file://$MODULE_DIR$/assets/lua/luajit64-decrypted" />
       <excludeFolder url="file://$MODULE_DIR$/com.klab.lapis-1.0.3/output" />
       <excludeFolder url="file://$MODULE_DIR$/com.klab.lapis-1.0.4/output" />
       <excludeFolder url="file://$MODULE_DIR$/com.klab.lapis-1.1.0/output" />
@@ -12,8 +14,7 @@
       <excludeFolder url="file://$MODULE_DIR$/com.klab.lapis-1.4.0/output" />
       <excludeFolder url="file://$MODULE_DIR$/com.klab.lapis-1.5.0/output" />
       <excludeFolder url="file://$MODULE_DIR$/luajit-decompiler-v2-lapis-relight/x64" />
-      <excludeFolder url="file://$MODULE_DIR$/assets/lua/luajit64" />
-      <excludeFolder url="file://$MODULE_DIR$/assets/lua/luajit64-decrypted" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -16,18 +16,20 @@ public class LapisGlobalMetadata {
 	}
 
 	private static byte[] doDecrypt(byte[] ciphertext) {
+		log.info("game.dat size = {}", String.format(" %08x", ciphertext.length));
+
+		var keyPosition = findPosition(ciphertext, 0x567fe814L);
+		var keyLength   = readSInt32(ciphertext, keyPosition + 4);
+		log.info("game.dat key length = {}", String.format(" %08x", keyLength));
+
+		var key = new byte[keyLength];
+		for (var i = 0; i < keyLength; ++i) {
+			key[i] = ciphertext[keyPosition + 0x10 + i];
+		}
+
 		var sizePosition = findPosition(ciphertext, 0xbcfaf088L);
 		var size         = readSInt32(ciphertext, sizePosition + 4);
-		log.info("game.dat size = {}", String.format(" %08x", size));
-
-		var stepPosition = findPosition(ciphertext, 0x567fe814L);
-		var step         = readSInt32(ciphertext, stepPosition + 4);
-		log.info("game.dat step = {}", String.format(" %08x", step));
-
-		var key = new byte[step];
-		for (var i = 0; i < step; ++i) {
-			key[i] = ciphertext[stepPosition + 0x10 + i % step];
-		}
+		log.info("game.dat plaintext size = {} from {}", String.format(" %08x", size), String.format(" %08x", sizePosition));
 
 		var rc4 = new RC4Engine();
 		rc4.init(true, new KeyParameter(key));
@@ -41,13 +43,14 @@ public class LapisGlobalMetadata {
 	private static void decryptStrings(byte[] globalMetaDataBytes) {
 		var stringOffset = readSInt32(globalMetaDataBytes, 0x18);
 		var stringCount  = readSInt32(globalMetaDataBytes, 0x1C);
-		for (int stringIndex = 0; stringIndex < stringCount; ++stringIndex) {
+		log.info("stringOffset = {}, stringCount = {}", String.format(" %08x", stringOffset), String.format(" %08x", stringCount));
+		for (var stringIndex = 0; stringIndex < stringCount; ++stringIndex) {
 			var pointer = stringOffset + stringIndex;
-			var a       = (byte) (stringIndex % 255);
+			var key     = (byte) (stringIndex % 255);
 			do {
-				a ^= globalMetaDataBytes[pointer];
-				globalMetaDataBytes[pointer++] = a;
-			} while (a != 0);
+				key ^= globalMetaDataBytes[pointer];
+				globalMetaDataBytes[pointer++] = key;
+			} while (key != 0);
 			stringIndex = pointer - stringOffset - 1;
 		}
 	}
