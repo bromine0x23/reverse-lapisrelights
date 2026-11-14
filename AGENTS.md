@@ -13,7 +13,7 @@
   + SoundBanks: Wwise SoundBanks 格式音频
 * 动态脚本：使用 [tolua](https://github.com/topameng/tolua) 框架加载的加密 LuaJIT 字节码
 
-更多逆向结论见 [docs/](docs/READMD.md)
+更多逆向结论见 [docs/](docs/README.md)
 
 ## 项目结构
 ```
