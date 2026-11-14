@@ -1,0 +1,96 @@
+﻿-- chunkname: @/Users/kc-pazuran/Documents/lapiz_jp/lapiz-asset-android/Assets/Products/Lua/luaData/TranOpen.lua
+
+local TranOpenInfo = {
+	ID = {
+		type = "integer"
+	},
+	Type = {
+		type = "integer"
+	},
+	Value = {
+		type = "integer"
+	},
+	Branch = {
+		default = "[]",
+		type = "array"
+	},
+	ActivityID = {
+		default = "[]",
+		type = "array"
+	}
+}
+local TranOpenCtrl = {
+	keyWord = "ID",
+	keyWordNum = 1,
+	hasCached = false
+}
+local TranOpen = {}
+
+function TranOpen:GetAllSync()
+	if TranOpenCtrl.hasCached then
+		return
+	end
+
+	local rowsList = SqlLiteSupport.ExecuteQuery("TranOpen", "select * from TranOpen")
+
+	rowsList:ForEach(function(v)
+		local jsonTb = SqlLiteTransfer.TransferFromJson(v, TranOpenInfo)
+		local keyWord = SqlLiteTransfer.GetKeyWord(TranOpenCtrl, jsonTb)
+
+		self[keyWord] = jsonTb
+	end)
+
+	TranOpenCtrl.hasCached = true
+	TranOpen.GetAllSync = nil
+	TranOpen.GetAllASync = nil
+end
+
+function TranOpen:GetAllASync()
+	if TranOpenCtrl.hasCached then
+		return
+	end
+
+	SqlLiteSupport.LazyCacheData("TranOpen", "select * from TranOpen", function()
+		local rowsList = SqlLiteSupport.GetCacheData("TranOpen")
+
+		rowsList:ForEach(function(v)
+			local jsonTb = SqlLiteTransfer.TransferFromJson(v, TranOpenInfo)
+			local keyWord = SqlLiteTransfer.GetKeyWord(TranOpenCtrl, jsonTb)
+
+			self[keyWord] = jsonTb
+		end)
+
+		TranOpenCtrl.hasCached = true
+		TranOpen.GetAllSync = nil
+		TranOpen.GetAllASync = nil
+	end)
+end
+
+setmetatable(TranOpen, {
+	__index = function(tb, key)
+		if not key or key == "" or key == 0 then
+			return nil
+		end
+
+		if key == "GetAllASync" or key == "GetAllSync" then
+			return function()
+				print(key .. " could be called only once")
+			end
+		end
+
+		local dicRow = SqlLiteSupport.ExecuteQueryOne("TranOpen", SqlLiteTransfer.GenSql("TranOpen", TranOpenCtrl, key))
+
+		if dicRow then
+			local jsonTb = SqlLiteTransfer.TransferFromJson(dicRow, TranOpenInfo)
+
+			tb[key] = jsonTb
+
+			return jsonTb
+		else
+			return nil
+		end
+	end
+})
+TranOpen:GetAllSync()
+
+return TranOpen
