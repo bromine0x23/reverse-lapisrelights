@@ -1,0 +1,6 @@
+[submodule "vendor/wwiser-utils"]
+	path = vendor/wwiser-utils
+	url = https://github.com/bnnm/wwiser-utils.git
+[submodule "luajit-decompiler-v2-lapis-relight"]
+	path = luajit-decompiler-v2-lapis-relight
+	url = git@github.com:bromine0x23/luajit-decompiler-v2-lapis-relight.git

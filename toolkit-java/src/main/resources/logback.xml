@@ -1,0 +1,26 @@
+<configuration>
+    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+    <timestamp key="byMonth" datePattern="yyyy-MM"/>
+    <timestamp key="byDate" datePattern="yyyy-MM-dd"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%highlight(%date{yyyy-MM-dd'T'HH:mm:ss.SSS}) %highlight(%5level) %highlight([%20.20thread]) %cyan(%-30.30logger{34}) : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/${byMonth}/${byDate}/lapis.${bySecond}.log</file>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd'T'HH:mm:ss.SSS} %5level [%20.20thread] %-5level %logger{34} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="xyz.bromine0x23" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
