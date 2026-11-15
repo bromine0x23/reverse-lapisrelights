@@ -1,0 +1,150 @@
+# MasterData 数据表
+
+游戏数据库包括：
+
+| 功能| 文件 |
+|---| --- |
+| 参数数据库 | `master_data.sqlite3` |
+| 文本数据库| `JP/master_data_lang.sqlite3` |
+
+
+## 参数数据库
+
+| 表名 | 功能 |
+| --- | --- |
+| `AREmotions` | AR模式角色表情动作配置 |
+| `ActiveBanner` | 活动入口Banner与跳转 |
+| `ActiveBuffInfo` | 活动增益图标与文本 |
+| `ActiveCardPool` | 活动卡池内容与消耗 |
+| `ActiveCondition` | 活动参与条件与周期 |
+| `ActiveData` | 活动实例排期与奖励 |
+| `ActiveManage` | 活动入口与界面管理 |
+| `ActiveUiManage` | 活动界面素材与布局 |
+| `ActorData` | 角色模型资源与挂点 |
+| `AllSkills` | 技能主表与升级消耗 |
+| `AvatarAsset` | 外观附加资源路径 |
+| `AvatarData` | 角色服装与属性加成 |
+| `BattleBuffData` | 战斗Buff效果与叠层 |
+| `BattleSkillData` | 技能施放表现与结算 |
+| `BattleStage` | 战斗关卡编排与演出 |
+| `BossctiveUIData` | Boss活动界面布局 |
+| `BulletData` | 弹道飞行与追踪参数 |
+| `CallData` | 好感度电话剧情配置 |
+| `CallTopicAward` | 电话话题奖励配置 |
+| `CardPool` | 卡池概率与开放配置 |
+| `CardStarData` | 卡牌升星消耗 |
+| `CardTag` | 卡牌标签与图标 |
+| `ChapterData` | 章节配置与星级奖励 |
+| `ChapterGroupData` | 章节分组与主页入口 |
+| `CharAvatarListData` | 角色可用外观列表 |
+| `CharacterCard` | 卡牌属性技能与资源 |
+| `CharacterCardSet` | 卡牌套装定义 |
+| `CharacterJoin` | 剧情加入角色与初始卡组 |
+| `CharacterRole` | 角色基础信息与语音 |
+| `CharacterTeam` | 角色组合与羁绊技 |
+| `ClubJob` | 公会职位定义 |
+| `ClubLevel` | 公会等级与人数上限 |
+| `ClubMirror` | 公会镜像战配置 |
+| `ClubMirrorEvent` | 公会战随机事件 |
+| `ClubPermission` | 公会职位权限 |
+| `ClubSkillLevel` | 公会技能等级与消耗 |
+| `ClubType` | 公会类型与模板 |
+| `Config` | 全局键值配置 |
+| `DanceData` | AR舞蹈模式配置 |
+| `DataAttrVerify` | 开发用数值校验基准 |
+| `DataVerifyConfig` | 开发用关卡校验配置 |
+| `DownloadConfig` | 关卡可选下载资源 |
+| `DropGroup` | 通用掉落组权重表 |
+| `EffectData` | 特效资源与音效绑定 |
+| `Equipment` | 装备属性与武器技能 |
+| `EquipmentQualityPromote` | 装备品质突破 |
+| `EquipmentUpgrade` | 装备强化消耗 |
+| `EquipmentUpgradeProperty` | 装备强化属性成长 |
+| `FavorLevel` | 好感度等级与奖励 |
+| `FavorPose` | 好感度姿势解锁 |
+| `FavorVoiceData` | 好感度语音配置 |
+| `Figure` | 角色Figure图鉴 |
+| `FromWhere` | 获取来源枚举 |
+| `GVGActiveShop` | GVG活动商店 |
+| `GVGRankAward` | GVG排名奖励 |
+| `GoodsData` | 商品价格与限购配置 |
+| `GoodsMonthPrivilege` | 月卡特权配置 |
+| `Guideshow` | 新手引导展示图 |
+| `Illustration` | 插画收藏图鉴 |
+| `ItemData` | 道具属性与使用效果 |
+| `JobCheckingData` | 职业组合加成 |
+| `LevelConfig` | 玩家等级体力与VIP |
+| `LoginPageManage` | 登录页资源与时限 |
+| `MReviewRequestSetting` | 商店评价弹窗触发 |
+| `Mail` | 邮件模板与附件 |
+| `Monster` | 怪物属性技能与掉落 |
+| `MotionControllerData` | 角色动作控制器映射 |
+| `Newbie` | 新手引导步骤 |
+| `Nickname` | 随机昵称词库 |
+| `Notice` | 游戏内公告 |
+| `PVPAchievement` | PVP排名成就 |
+| `PVPBotCharacter` | PVP机器人角色属性 |
+| `PVPBotCharacterCard` | PVP机器人卡组 |
+| `PVPBotPlayer` | PVP机器人生成规则 |
+| `PVPDrop` | PVP分数段掉落 |
+| `PVPRankingList` | PVP段位与关卡 |
+| `PVPSeason` | PVP赛季与次数 |
+| `PVPSeasonRankingAward` | PVP赛季排名奖励 |
+| `PVPSubSeasonAward` | PVP小节排名奖励 |
+| `PushConfig` | 推送通知配置 |
+| `RaidBoss` | 共斗Boss奖励配置 |
+| `RaidBossUIData` | 共斗Boss界面布局 |
+| `ResourceBanner` | 资源下载提示Banner |
+| `RewardPack` | 奖励包组合配置 |
+| `SceneData` | 场景背景与BGM资源 |
+| `ScrollData` | 卷轴随机词条池 |
+| `ScrollSetData` | 卷轴套装效果 |
+| `SensitiveWord` | 敏感词库 |
+| `SessionData` | 战斗Session表演配置 |
+| `SessionWord` | 角色Session语音事件 |
+| `ShopData` | 商店页签与开关 |
+| `ShopGoods` | 商店货架与刷新 |
+| `SkillBuff` | 限时技能Buff配置 |
+| `SkillNode` | 技能树节点与消耗 |
+| `SkillTree` | 角色职业技能树结构 |
+| `SongData` | 歌曲演唱会资源配置 |
+| `SongSubtitleData` | 歌词字幕配置 |
+| `StageData` | 关卡消耗掉落与奖励 |
+| `StoryAward` | 剧情关卡奖励 |
+| `TaskData` | 任务条件与奖励 |
+| `TaskListData` | 任务列表与积分奖励 |
+| `TeamFetterCost` | 组合羁绊技消耗 |
+| `ThemeData` | 主题房间放置收益 |
+| `TimelineData` | Timeline资源与音源 |
+| `TopicData` | 短信剧情配置 |
+| `TranOpen` | 功能开放条件 |
+| `VideoData` | 动画视频与解锁 |
+| `Work` | 打工委托配置 |
+| `WorkAbility` | 打工能力配置 |
+| `WorkRequire` | 打工条件配置 |
+| `m_activity_free_ten_draw` | 免费十连活动 |
+| `m_billing_age_limit` | 年龄付费上限 |
+| `m_billing_apple_product` | AppStore商品价格 |
+| `m_billing_google_product` | GooglePlay商品价格 |
+| `m_billing_limited_product` | 限定商品售卖规则 |
+| `m_billing_product_asset` | 商品名称与图片 |
+| `m_billing_product_content` | 商品内容与数量 |
+| `m_billing_product_pack_ext_info` | 礼包扩展内容 |
+| `m_billing_product_type_normal` | 普通商品排序 |
+| `m_billing_product_type_pack` | 礼包商品排序 |
+| `m_block_cardpool` | 卡池屏蔽规则 |
+| `m_caution_setting` | 付费确认文案 |
+| `m_copyright` | 开源许可声明 |
+| `m_gacha_ticket` | 抽卡券映射 |
+| `m_gift_box` | 登录礼包总配置 |
+| `m_gift_box_content` | 登录礼包每日内容 |
+| `m_ng_word` | NG词库 |
+| `m_platform_achievement` | 平台成就映射 |
+| `m_virtual_money_history_reason_setting` | 虚拟货币消费原因 |
+
+## 文本数据库
+
+| 表名 | 功能 |
+| --- | --- |
+| `Language` | 游戏本地化文本 |
+| `Terms` | 条款文本 |

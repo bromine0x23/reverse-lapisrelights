@@ -31,7 +31,9 @@ AssetBundles\ #
     products\
       resources\
         actors\                    # 3D 模型
-        ar\                        # AR 相关
+          avatars\                 # 游戏角色模型
+          enemies\                 # 敌方模型
+        ar\                        # AR 功能相关
         battle\                    # 战斗相关
         card\                      # Spine 角色卡图
         luajit32\                  # 用于 32位架构的 LuaJIT 脚本

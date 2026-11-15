@@ -19,7 +19,9 @@ curl -X HEAD -H "X-Unity-Version: 2019.4.26f1c1" --location "https://prod-lapis-
 [Unity-AssetBundle.md](Unity-AssetBundle.md)
 
 ## MasterData
-[MasterData.md](MasterData.md)
+格式：[MasterData.md](MasterData.md)
+
+数据表：[MasterData-tables.md](MasterData-tables.md)
 
 ## Wwise SoundBank
 [Wwise-SoundBank.md](Wwise-SoundBank.md)

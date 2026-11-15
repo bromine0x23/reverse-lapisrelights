@@ -3,4 +3,6 @@
 *.so filter=lfs diff=lfs merge=lfs -text
 *.dat filter=lfs diff=lfs merge=lfs -text
 *.jar filter=lfs diff=lfs merge=lfs -text
+*.sqlite3 filter=lfs diff=lfs merge=lfs -text
 assets/lua/luajit64/** filter=lfs diff=lfs merge=lfs -text
+assets/manifest/**/manifest.xml filter=lfs diff=lfs merge=lfs -text

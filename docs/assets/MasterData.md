@@ -37,3 +37,7 @@ private static byte[] databaseKeys(int length, int k1, int k2, int k3) {
 ```
 
 [@Francesco149: reversing-sifas]: https://github.com/Francesco149/reversing-sifas
+
+## 数据表
+
+各数据表的功能说明见 [MasterData-tables.md](MasterData-tables.md)。
