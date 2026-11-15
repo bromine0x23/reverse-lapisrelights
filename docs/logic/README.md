@@ -1,4 +1,7 @@
 # 逆向结论：游戏逻辑
 
 ## 数据库
-[database.md](../logic/database.md)
+[Database.md](Database.md)
+
+## 角色
+[Characters.md](Characters.md)
