@@ -12,8 +12,11 @@
 1. GZIP 解压缩
 1. C# BinaryFormatter 反序列化
 
-在不知道原始类结构的情况下，无法在 C# 中通过 BinaryFormatter 进行反序列化。
-但使用 [gurnec/Undo_FFG: nrbf.py] 脚本，可以直接将序列化数据导出为 JSON，绕过了对原始类结构的需要。
+~~在不知道原始类结构的情况下，无法在 C# 中通过 BinaryFormatter 进行反序列化。~~
+使用 [gurnec/Undo_FFG: nrbf.py] 的 Python 脚本，可以直接将序列化数据导出为 JSON，绕过了对原始类结构的需要。
+
+.NET 9 新引入的 `NrbfDecoder` 可以直接解码 NRBF 内容，见 [Read BinaryFormatter (NRBF) payloads]。
 
 [@MalitsPlus: Lapis Re:LiGHTs 资源解析]: https://malitsplus.blogspot.com/2022/01/lapis-relights.html
 [gurnec/Undo_FFG: nrbf.py]: https://github.com/gurnec/Undo_FFG/blob/master/nrbf.py
+[Read BinaryFormatter (NRBF) payloads]: https://github.com/dotnet/docs/blob/main/docs/standard/serialization/binaryformatter-migration-guide/read-nrbf-payloads.md
