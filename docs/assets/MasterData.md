@@ -1,5 +1,7 @@
 # MasterData
 
+各数据库的功能说明见 [database.md](../logic/database.md)
+
 ## 来源
 资源清单中 `Oz.GameKit.Version.MasterDataInfo` 类型的对象是 SQLite 数据库。
 实际具有只有两种文件：`MASTERDATA` 和 `MASTERDATA_LANG`，对应参数数据库和文本数据库，分别从 `/<version>/MasterData/master_data.db` 和 `/<version>/Android/JP/master_data_lang.db` 下载。
@@ -37,7 +39,3 @@ private static byte[] databaseKeys(int length, int k1, int k2, int k3) {
 ```
 
 [@Francesco149: reversing-sifas]: https://github.com/Francesco149/reversing-sifas
-
-## 数据表
-
-各数据表的功能说明见 [MasterData-tables.md](MasterData-tables.md)。

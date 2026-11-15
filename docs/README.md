@@ -7,3 +7,7 @@
 ## 游戏资源
 
 见 [assets/](assets/README.md)
+
+## 游戏逻辑
+
+见 [logic/](logic/README.md)

@@ -1,12 +1,11 @@
-# MasterData 数据表
+# 数据库
 
 游戏数据库包括：
 
-| 功能| 文件 |
+| 功能| 路径 |
 |---| --- |
 | 参数数据库 | `master_data.sqlite3` |
 | 文本数据库| `JP/master_data_lang.sqlite3` |
-
 
 ## 参数数据库
 
