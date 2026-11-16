@@ -1,6 +1,6 @@
 # MasterData
 
-各数据库的功能说明见 [Database.md](../logic/Database.md)
+各数据库的功能说明见 [Database.md](../data/Database.md)
 
 ## 来源
 资源清单中 `Oz.GameKit.Version.MasterDataInfo` 类型的对象是 SQLite 数据库。

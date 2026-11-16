@@ -8,6 +8,6 @@
 
 见 [assets/](assets/README.md)
 
-## 游戏逻辑
+## 游戏数据
 
-见 [logic/](logic/README.md)
+见 [data/](data/README.md)
