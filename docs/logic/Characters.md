@@ -14,9 +14,9 @@
 | ナデシコ       | 抚子       | Nadeshiko    | この花は乙女    | 花为乙女     | Konohana wa Otome | 本泉莉奈   | 401                    | Nad        | 0130         |
 | ツバキ         | 椿         | Tsubaki      | この花は乙女    | 花为乙女     | Konohana wa Otome | 鈴木亜理沙 | 402                    | Tsu        | 0140         |
 | カエデ         | 枫         | Kaede        | この花は乙女    | 花为乙女     | Konohana wa Otome | 大野柚布子 | 403                    | Kae        | 0150         |
-| ラトゥーラ     | 菈图菈     | Ratura       | Sugar Pockets   | 口袋甜心     | Sugar Pockets     | 早瀬雪未   | 501                    | Rat        | 0180         |
-| シャンペ       | 香蓓       | Champe       | Sugar Pockets   | 口袋甜心     | Sugar Pockets     | 広瀬世華   | 502                    | Cha        | 0200         |
-| メアリーベリー | 玛莉贝丽   | Maryberry    | Sugar Pockets   | 口袋甜心     | Sugar Pockets     | 赤尾ひかる | 503                    | Mar        | 0190, 0191   |
+| ラトゥーラ     | 菈图菈     | Ratura       | シュガーポケッツ   | 口袋甜心     | Sugar Pockets     | 早瀬雪未   | 501                    | Rat        | 0180         |
+| シャンペ       | 香蓓       | Champe       | シュガーポケッツ   | 口袋甜心     | Sugar Pockets     | 広瀬世華   | 502                    | Cha        | 0200         |
+| メアリーベリー | 玛莉贝丽   | Maryberry    | シュガーポケッツ   | 口袋甜心     | Sugar Pockets     | 赤尾ひかる | 503                    | Mar        | 0190, 0191   |
 | アンジェリカ   | 安吉莉卡   | Angelica     | Sadistic★Candy | 小恶魔★糖果 | Sadistic★Candy   | 雨宮夕夏   | 601                    | Ang        | 0160         |
 | ルキフェル     | 露西菲尔   | Lucifer      | Sadistic★Candy | 小恶魔★糖果 | Sadistic★Candy   | 松田利冴   | 602                    | Luc        | 0170         |
 | ユエ           | 月         | Yue          | supernova       | 超新星       | supernova         | 桜木夕     | 201                    | Yue        | 0100         |
