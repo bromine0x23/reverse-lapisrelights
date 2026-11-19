@@ -10,6 +10,7 @@ lib\
     libtolua.so        # 用于处理 LuaJit 脚本
     libklbsqlite3.so   # 用于处理数据库
     libLapis.so        # AssetBundle 流解密
+    libjackpot-core.so # 安全校验与反作弊
     libklabniceway.so  # DEX 脱壳、ClassLoader 替换与反调试
     libassistant1.so   # 完整性看门狗
     libassistant2.so   # 完整性看门狗
@@ -18,6 +19,7 @@ lib\
 
 * libil2cpp.so
 * [libLapis.so](libLapis.so.md)
+* [libjackpot-core.so](libjackpot-core.so.md)
 * [libklabniceway.so](libklabniceway.so.md)
 * [libassistant1.so](libassistant1.so.md)
 * [libassistant2.so](libassistant2.so.md)
