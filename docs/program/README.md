@@ -65,12 +65,14 @@ public byte[] decrypt(byte[] cipher) {
   byte[] plain = new byte[cipher.length];
   for (int i = 0; i < plain.length; ++i) {
       int k = KEY[i % 6];
-	  int b = cipher[length - i - 1];
+      int b = cipher[length - i - 1];
       plain[i] = (byte) (k ^ ~b);
   }
   return plain;
 }
 ```
+
+游戏运行时 DEX 脱壳结果写入 `TargetApk.zip`
 
 ## global-metadata.dat
 [global-metadata.dat.md](global-metadata.dat.md)
