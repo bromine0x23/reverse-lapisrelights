@@ -10,12 +10,17 @@ lib\
     libtolua.so        # 用于处理 LuaJit 脚本
     libklbsqlite3.so   # 用于处理数据库
     libLapis.so        # AssetBundle 流解密
-    libklabniceway.so  # 被 DEX 脱壳处理使用
+    libklabniceway.so  # DEX 脱壳、ClassLoader 替换与反调试
+    libassistant1.so   # 完整性看门狗
+    libassistant2.so   # 完整性看门狗
   armeabi-v7a\         # 用于32位ARM架构
 ```
 
 * libil2cpp.so
 * [libLapis.so](libLapis.so.md)
+* [libklabniceway.so](libklabniceway.so.md)
+* [libassistant1.so](libassistant1.so.md)
+* [libassistant2.so](libassistant2.so.md)
 
 ## 二进制库加密
 
@@ -23,6 +28,8 @@ lib\
 - `libtolua.so`
 - `libLapis.so`
 - `libklabniceway.so`
+
+`libassistant1.so`、`libassistant2.so` 也包含 `.kcniceway` 段，但代码**未加密**，无需自解密，见 [libassistant1.so](libassistant1.so.md)、[libassistant2.so](libassistant2.so.md)。
 
 解密通过 `.init_array` 段的初始化代码进行：
 读取 `elf.e_entry` 指向的地址，获取 `address`、`length`、`key` 三个参数。
@@ -47,7 +54,7 @@ lib\
 
 ## DEX 加壳
 使用了 [guanchao/apk_auto_enforce: jiagu.py] 中的方法隐藏了真实 class.dex。
-相关处理使用 `libklabniceway.so` 库。
+相关处理使用 [libklabniceway.so](libklabniceway.so.md) 库。
 ```
 ----------------------
 |  脱壳用 classes.dex |
