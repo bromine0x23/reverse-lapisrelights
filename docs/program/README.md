@@ -9,12 +9,13 @@ lib\
     libil2cpp.so       # 游戏主要代码
     libtolua.so        # 用于处理 LuaJit 脚本
     libklbsqlite3.so   # 用于处理数据库
-    libLapis.so        #
+    libLapis.so        # AssetBundle 流解密
     libklabniceway.so  # 被 DEX 脱壳处理使用
   armeabi-v7a\         # 用于32位ARM架构
 ```
 
 * libil2cpp.so
+* [libLapis.so](libLapis.so.md)
 
 ## 二进制库加密
 
