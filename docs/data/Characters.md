@@ -24,11 +24,11 @@
 | ユエ<br>月<br>Yue                       | supernova<br>超新星<br>supernova                   | 桜木夕     | 1月25日  | 17     | 164  | 84 | 56 | 83 | AB   |
 | ミルフィーユ<br>米露菲<br>Millefeuille  | supernova<br>超新星<br>supernova                   | 奥紗瑛子   | 3月6日   | 17     | 156  | 90 | 61 | 87 | A    |
 | フィオナ<br>费奥娜<br>Fiona             | supernova<br>超新星<br>supernova                   | 伊藤はるか | 1月6日   | 17     | 162  | 76 | 53 | 77 | B    |
-| エリザ<br>伊莉莎<br>Eliza               | Ray<br>星光<br>Ray                                 | 花澤香菜   | 4月30日  | 20(17) | 165  | 85 | 57 | 84 | AB   |
-| クロエ<br>克洛伊<br>Chloe               | Ray<br>星光<br>Ray                                 | 南條愛乃   | 4月2日   | 20(17) | 162  | 90 | 58 | 87 | A    |
-| あんじぇ<br>安洁<br>Angers              | Ray<br>星光<br>Ray                                 | 雨宮夕夏   | 6月12日  | 18(15) | 139  | 66 | 52 | 67 | AB   |
-| カミラ<br>卡米拉<br>Camilla             | Ray<br>星光<br>Ray                                 | 上坂すみれ | 8月21日  | 21(18) | 169  | 78 | 56 | 81 | B    |
-| ユズリハ<br>让叶<br>Yuzuriha            | Ray<br>星光<br>Ray                                 | 佐倉綾音   | 11月29日 | 21(18) | 146  | 83 | 54 | 78 | O    |
+| エリザ<br>伊莉莎<br>Eliza               | Ray<br>星光<br>Ray                                 | 花澤香菜   | 4月30日  | 20 (17) | 165  | 85 | 57 | 84 | AB   |
+| クロエ<br>克洛伊<br>Chloe               | Ray<br>星光<br>Ray                                 | 南條愛乃   | 4月2日   | 20 (17) | 162  | 90 | 58 | 87 | A    |
+| あんじぇ<br>安洁<br>Angers              | Ray<br>星光<br>Ray                                 | 雨宮夕夏   | 6月12日  | 18 (15) | 139  | 66 | 52 | 67 | AB   |
+| カミラ<br>卡米拉<br>Camilla             | Ray<br>星光<br>Ray                                 | 上坂すみれ | 8月21日  | 21 (18) | 169  | 78 | 56 | 81 | B    |
+| ユズリハ<br>让叶<br>Yuzuriha            | Ray<br>星光<br>Ray                                 | 佐倉綾音   | 11月29日 | 21 (18) | 146  | 83 | 54 | 78 | O    |
 
 ## 参数数据库
 
