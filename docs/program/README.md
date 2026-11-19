@@ -18,6 +18,7 @@ lib\
 ```
 
 * libil2cpp.so
+* [libklbsqlite3.so](libklbsqlite3.so.md)
 * [libLapis.so](libLapis.so.md)
 * [libjackpot-core.so](libjackpot-core.so.md)
 * [libklabniceway.so](libklabniceway.so.md)
