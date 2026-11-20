@@ -18,6 +18,7 @@ lib\
 ```
 
 * [libil2cpp.so](libil2cpp.so.md)
+* [libtolua.so](libtolua.so.md)
 * [libklbsqlite3.so](libklbsqlite3.so.md)
 * [libLapis.so](libLapis.so.md)
 * [libjackpot-core.so](libjackpot-core.so.md)
