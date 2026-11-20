@@ -17,7 +17,7 @@ lib\
   armeabi-v7a\         # 用于32位ARM架构
 ```
 
-* libil2cpp.so
+* [libil2cpp.so](libil2cpp.so.md)
 * [libklbsqlite3.so](libklbsqlite3.so.md)
 * [libLapis.so](libLapis.so.md)
 * [libjackpot-core.so](libjackpot-core.so.md)
