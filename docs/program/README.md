@@ -14,6 +14,7 @@ lib\
     libtolua.so        # 用于处理 LuaJit 脚本
     libklbsqlite3.so   # 用于处理数据库
     libLapis.so        # AssetBundle 流解密
+    libUnityPlugin.so  # IL2CPP 元数据解密插件（game.dat）
     libjackpot-core.so # 安全校验与反作弊
     libklabniceway.so  # DEX 脱壳、ClassLoader 替换与反调试
     libassistant1.so   # 完整性看门狗
@@ -25,6 +26,7 @@ lib\
 * [libtolua.so](libtolua.so.md)
 * [libklbsqlite3.so](libklbsqlite3.so.md)
 * [libLapis.so](libLapis.so.md)
+* [libUnityPlugin.so](libUnityPlugin.so.md)
 * [libjackpot-core.so](libjackpot-core.so.md)
 * [libklabniceway.so](libklabniceway.so.md)
 * [libassistant1.so](libassistant1.so.md)

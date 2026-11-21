@@ -238,7 +238,7 @@ void il2cpp_get_string(char *s, int offset) {
 }
 ```
 
-实现用一个以 `offset` 为键的 `std::map` 记录已解码的字符串，避免同一名称被解码两次。
+实现用一个以 `offset` 为键的 `std::set` 记录已解码的字符串，避免同一名称被解码两次。
 
 ### `query_call_back` 接口
 
