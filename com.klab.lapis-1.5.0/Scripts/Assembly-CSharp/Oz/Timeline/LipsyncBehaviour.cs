@@ -12,19 +12,8 @@ namespace Oz.Timeline
 {
     public class LipsyncBehaviour : PlayableBehaviour
     {
-        public LipsyncAsset Asset { get; set; }
+        public LipsyncAsset Asset { get; private set; }
 
-        // RVA: 0x13DAA88
-        public LipsyncAsset get_Asset()
-        {
-            return Asset;
-        }
-
-        // RVA: 0x13DAA90
-        private void set_Asset(LipsyncAsset value)
-        {
-            Asset = value;
-        }
 
         // RVA: 0x13DA9E8
         public LipsyncBehaviour(LipsyncAsset asset)

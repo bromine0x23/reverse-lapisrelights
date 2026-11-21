@@ -26,17 +26,6 @@ namespace LuaInterface
         private static ObjectTranslator _translator;
         public bool LogGC { get; set; }
 
-        // RVA: 0x1F6DF30
-        public bool get_LogGC()
-        {
-            return LogGC;
-        }
-
-        // RVA: 0x1F6DF38
-        public void set_LogGC(bool value)
-        {
-            LogGC = value;
-        }
 
         // RVA: 0x1F6DF44
         public ObjectTranslator()

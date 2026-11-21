@@ -17,15 +17,9 @@ namespace Oz.ActorModule
     public class ModelSystem
     {
         [SerializeField]
-        protected ScaleSettings m_ScaleSettings;
-        [SerializeField]
-        protected GameObject m_Prefab;
-        [SerializeField]
         private Transform m_Parent;
         [SerializeField]
         protected Animator m_Animator;
-        [SerializeField]
-        private GameObject m_Root;
         [SerializeField]
         protected Vector3 m_OriginScale;
         [SerializeField]
@@ -34,53 +28,31 @@ namespace Oz.ActorModule
         private StringTransformDictionary m_Bones;
         [SerializeField]
         protected List<Renderer> m_Renderers;
-        [SerializeField]
-        private MaterialPropertyBlock m_MaterialPropertyBlock;
-        public ScaleSettings ScaleSettings { get; }
-        public GameObject Prefab { get; }
-        public GameObject Root { get; }
-        public MaterialPropertyBlock MaterialPropertyBlock { get; }
-
-        // RVA: 0x13F2300
-        public ScaleSettings get_ScaleSettings()
-        {
-            return m_ScaleSettings;
-        }
-
-        // RVA: 0x13F2308
-        public GameObject get_Prefab()
-        {
-            return m_Prefab;
-        }
-
-        // RVA: 0x13F2310
-        public GameObject get_Root()
-        {
-            return m_Root;
-        }
-
-        // RVA: 0x13F2318
-        private void set_Root(GameObject value)
-        {
-            m_Root = value;
-        }
+        [field: SerializeField]
+        public ScaleSettings ScaleSettings { get; private set; }
+        [field: SerializeField]
+        public GameObject Prefab { get; private set; }
+        [field: SerializeField]
+        public GameObject Root { get; private set; }
+        [field: SerializeField]
+        public MaterialPropertyBlock MaterialPropertyBlock { get; private set; }
 
         // RVA: 0x13F2320
         public MaterialPropertyBlock get_MaterialPropertyBlock()
         {
-            if (m_MaterialPropertyBlock == null)
+            if (MaterialPropertyBlock == null)
             {
-                m_MaterialPropertyBlock = new MaterialPropertyBlock();
+                MaterialPropertyBlock = new MaterialPropertyBlock();
             }
-            return m_MaterialPropertyBlock;
+            return MaterialPropertyBlock;
         }
 
         // RVA: 0x13F238C
         public ModelSystem(Transform parent, GameObject modelPrefab, ScaleSettings scaleSettings)
         {
-            m_Prefab = modelPrefab;
+            Prefab = modelPrefab;
             m_Parent = parent;
-            m_ScaleSettings = scaleSettings;
+            ScaleSettings = scaleSettings;
             m_OriginBoneScales = new StringVector3Dictionary();
             m_Bones = new StringTransformDictionary();
             m_Renderers = new List<Renderer>();
@@ -89,11 +61,11 @@ namespace Oz.ActorModule
         // RVA: 0x13F24FC
         public virtual void Create()
         {
-            m_Root = Object.Instantiate(m_Prefab, m_Parent);
-            m_Root.name = "Model";
-            m_Animator = m_Root.GetComponent<Animator>();
-            m_Renderers.AddRange(m_Root.GetComponentsInChildren<Renderer>());
-            TransformExtentions.RecursiveFindChildrenPath(m_Root.transform, m_Bones);
+            Root = Object.Instantiate(Prefab, m_Parent);
+            Root.name = "Model";
+            m_Animator = Root.GetComponent<Animator>();
+            m_Renderers.AddRange(Root.GetComponentsInChildren<Renderer>());
+            TransformExtentions.RecursiveFindChildrenPath(Root.transform, m_Bones);
             ApplyScale();
         }
 
@@ -101,7 +73,7 @@ namespace Oz.ActorModule
         public virtual void Destroy()
         {
             m_Renderers.Clear();
-            Object.Destroy(m_Root);
+            Object.Destroy(Root);
         }
 
         // RVA: 0x13F26A8
@@ -121,25 +93,25 @@ namespace Oz.ActorModule
         // RVA: 0x13F27A8
         protected virtual void ApplyScale()
         {
-            if (m_ScaleSettings == null)
+            if (ScaleSettings == null)
             {
                 return;
             }
 
-            if (m_Root != null)
+            if (Root != null)
             {
-                m_OriginScale = m_Root.transform.localScale;
-                m_Root.transform.localScale = m_OriginScale * m_ScaleSettings.scaleRatio;
+                m_OriginScale = Root.transform.localScale;
+                Root.transform.localScale = m_OriginScale * ScaleSettings.scaleRatio;
             }
 
-            if (m_ScaleSettings.listScaleData == null)
+            if (ScaleSettings.listScaleData == null)
             {
                 return;
             }
 
-            for (int i = 0; i < m_ScaleSettings.listScaleData.Count; i++)
+            for (int i = 0; i < ScaleSettings.listScaleData.Count; i++)
             {
-                ScaleData data = m_ScaleSettings.listScaleData[i];
+                ScaleData data = ScaleSettings.listScaleData[i];
                 if (data == null)
                 {
                     continue;
@@ -175,9 +147,9 @@ namespace Oz.ActorModule
                 return;
             }
 
-            if (m_Root != null)
+            if (Root != null)
             {
-                m_Root.transform.localScale = m_OriginScale * scaleSettings.scaleRatio;
+                Root.transform.localScale = m_OriginScale * scaleSettings.scaleRatio;
             }
 
             if (scaleSettings.listScaleData == null)
@@ -205,14 +177,14 @@ namespace Oz.ActorModule
         // RVA: 0x13F2D98
         public virtual void SetScale(bool origin)
         {
-            if (m_ScaleSettings != null && m_Root != null)
+            if (ScaleSettings != null && Root != null)
             {
-                float ratio = origin ? 1f : m_ScaleSettings.scaleRatio;
-                if (m_ScaleSettings.isLoli && origin)
+                float ratio = origin ? 1f : ScaleSettings.scaleRatio;
+                if (ScaleSettings.isLoli && origin)
                 {
                     ratio = 0.89f;
                 }
-                m_Root.transform.localScale = m_OriginScale * ratio;
+                Root.transform.localScale = m_OriginScale * ratio;
             }
 
             if (origin)
@@ -229,14 +201,14 @@ namespace Oz.ActorModule
                 return;
             }
 
-            if (m_ScaleSettings == null || m_ScaleSettings.listScaleData == null)
+            if (ScaleSettings == null || ScaleSettings.listScaleData == null)
             {
                 return;
             }
 
-            for (int i = 0; i < m_ScaleSettings.listScaleData.Count; i++)
+            for (int i = 0; i < ScaleSettings.listScaleData.Count; i++)
             {
-                ScaleData data = m_ScaleSettings.listScaleData[i];
+                ScaleData data = ScaleSettings.listScaleData[i];
                 if (data == null)
                 {
                     continue;

@@ -14,7 +14,6 @@ namespace Oz.Timeline
     public class EyeBlinkMixerPlayableBehaviour : PlayableBehaviour
     {
         private EyeBlinkPlayableBehaviour clip;
-        private ExpressionAnimator _bindingComponent;
         public ExpressionAnimator bindingComponent { get; set; }
 
         // RVA: 0x13D7CEC
@@ -23,33 +22,21 @@ namespace Oz.Timeline
             clip = behaviour;
         }
 
-        // RVA: 0x13D7CF4
-        public ExpressionAnimator get_bindingComponent()
-        {
-            return _bindingComponent;
-        }
-
-        // RVA: 0x13D7CFC
-        public void set_bindingComponent(ExpressionAnimator value)
-        {
-            _bindingComponent = value;
-        }
-
         // RVA: 0x13D7D04
         public override void OnGraphStart(Playable playable)
         {
-            if (_bindingComponent != null)
+            if (bindingComponent != null)
             {
-                _bindingComponent.SetAutoBlink(false);
+                bindingComponent.SetAutoBlink(false);
             }
         }
 
         // RVA: 0x13D7D9C
         public override void OnGraphStop(Playable playable)
         {
-            if (_bindingComponent != null)
+            if (bindingComponent != null)
             {
-                _bindingComponent.SetAutoBlink(true);
+                bindingComponent.SetAutoBlink(true);
             }
         }
 
@@ -73,15 +60,15 @@ namespace Oz.Timeline
             if (playable.GetInputWeight(clipIdx) > 0f && playable.GetPlayState() == PlayState.Playing)
             {
                 Playable input = playable.GetInput(clipIdx);
-                if (clip.blinkCurve != null && _bindingComponent != null)
+                if (clip.blinkCurve != null && bindingComponent != null)
                 {
-                    _bindingComponent.SetBlinkRatio(
+                    bindingComponent.SetBlinkRatio(
                         clip.blinkCurve.Evaluate((float)input.GetTime() / (float)input.GetDuration()));
                 }
             }
-            else if (_bindingComponent != null)
+            else if (bindingComponent != null)
             {
-                _bindingComponent.SetBlinkRatio(1f);
+                bindingComponent.SetBlinkRatio(1f);
             }
         }
 

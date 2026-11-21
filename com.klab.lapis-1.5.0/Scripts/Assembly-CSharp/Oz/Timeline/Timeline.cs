@@ -30,17 +30,7 @@ namespace Oz.Timeline
         public DirectorWrapMode extrapolationMode { get; set; }
         public bool playOnAwake { get; set; }
 
-        // RVA: 0x13DD014
-        public GameObject get_gameObject()
-        {
-            return gameObject;
-        }
 
-        // RVA: 0x13DD01C
-        public void set_gameObject(GameObject value)
-        {
-            gameObject = value;
-        }
 
         // RVA: 0x13DD024
         public PlayState get_state()

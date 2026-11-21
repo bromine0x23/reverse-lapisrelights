@@ -36,7 +36,8 @@ namespace Game
         public const int UrlsPayloadFieldNumber = 5;
         private ByteString urlsPayload_;
         public static MessageParser<AssetUrlsResponse> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public StatusCode Status { get; set; }
         public RepeatedField<SignedURL> Urls { get; }
@@ -59,7 +60,7 @@ namespace Game
         // RVA: 0x1A3A320
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1A3A37C

@@ -29,7 +29,8 @@ namespace Game
         public const int SignedSegFieldNumber = 2;
         private string signedSeg_;
         public static MessageParser<SignedURL> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public string PackHash { get; set; }
         public string SignedSeg { get; set; }
@@ -49,7 +50,7 @@ namespace Game
         // RVA: 0x1928530
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x192858C

@@ -21,9 +21,7 @@ namespace Oz.Timeline
         [SerializeField]
         private float weight;
         [SerializeField]
-        private LipsyncMixer <Mixer>k__BackingField;
         [SerializeField]
-        private int <ClipIdx>k__BackingField;
 
         // RVA: 0x13DA8FC
         public AnimationIndex get_Index()
@@ -37,29 +35,9 @@ namespace Oz.Timeline
             return weight;
         }
 
-        // RVA: 0x13DA90C
-        public LipsyncMixer get_Mixer()
-        {
-            return Mixer;
-        }
 
-        // RVA: 0x13DA914
-        internal void set_Mixer(LipsyncMixer value)
-        {
-            Mixer = value;
-        }
 
-        // RVA: 0x13DA91C
-        public int get_ClipIdx()
-        {
-            return ClipIdx;
-        }
 
-        // RVA: 0x13DA924
-        internal void set_ClipIdx(int value)
-        {
-            ClipIdx = value;
-        }
 
         // RVA: 0x13DA92C
         public override Playable CreatePlayable(PlayableGraph graph, GameObject go)

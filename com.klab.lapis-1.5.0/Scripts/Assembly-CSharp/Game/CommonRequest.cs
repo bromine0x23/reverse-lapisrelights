@@ -45,7 +45,8 @@ namespace Game
         public const int MainResVersionFieldNumber = 10;
         private string mainResVersion_;
         public static MessageParser<CommonRequest> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public ByteString Payload { get; set; }
         public string Signature { get; set; }
@@ -73,7 +74,7 @@ namespace Game
         // RVA: 0x1A3D020
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1A3D07C

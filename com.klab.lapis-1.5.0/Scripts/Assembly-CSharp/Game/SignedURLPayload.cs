@@ -28,7 +28,8 @@ namespace Game
         private static readonly FieldCodec<SignedURL> _repeated_urls_codec;
         private readonly RepeatedField<SignedURL> urls_;
         public static MessageParser<SignedURLPayload> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public RepeatedField<SignedURL> Urls { get; }
 
@@ -47,7 +48,7 @@ namespace Game
         // RVA: 0x1928F14
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1928F70

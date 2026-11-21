@@ -15,66 +15,31 @@ namespace Oz.ActorModule
 {
     public class Actor : MonoBehaviour, IMaterialPropertyBlockModifier, ITimelineBinding
     {
-        [SerializeField]
-        private GameObject m_Root;
-        [SerializeField]
-        private SkeletonSystem m_SkeletonSystem;
-        [SerializeField]
-        private AvatarSystem m_AvatarSystem;
-        [SerializeField]
-        private MotionSystem m_MotionSystem;
-        [SerializeField]
-        private ExpressionSystem m_ExpressionSystem;
         public InteractSetting InteractSettingFile;
         private LinkedList<IBehaviourTask> m_Tasks;
         public GameObject SkeletonRoot { get; }
-        public GameObject Root { get; }
-        public SkeletonSystem SkeletonSystem { get; }
-        public AvatarSystem AvatarSystem { get; }
-        public MotionSystem MotionSystem { get; }
-        public ExpressionSystem ExpressionSystem { get; }
+        [field: SerializeField]
+        public GameObject Root { get; private set; }
+        [field: SerializeField]
+        public SkeletonSystem SkeletonSystem { get; private set; }
+        [field: SerializeField]
+        public AvatarSystem AvatarSystem { get; private set; }
+        [field: SerializeField]
+        public MotionSystem MotionSystem { get; private set; }
+        [field: SerializeField]
+        public ExpressionSystem ExpressionSystem { get; private set; }
         public bool IsLoli { get; }
 
         // RVA: 0x16ADE0C
         public GameObject get_SkeletonRoot()
         {
-            return m_SkeletonSystem.Root;
-        }
-
-        // RVA: 0x16ADE24
-        public GameObject get_Root()
-        {
-            return m_Root;
-        }
-
-        // RVA: 0x16ADE2C
-        public SkeletonSystem get_SkeletonSystem()
-        {
-            return m_SkeletonSystem;
-        }
-
-        // RVA: 0x16ADE34
-        public AvatarSystem get_AvatarSystem()
-        {
-            return m_AvatarSystem;
-        }
-
-        // RVA: 0x16ADE3C
-        public MotionSystem get_MotionSystem()
-        {
-            return m_MotionSystem;
-        }
-
-        // RVA: 0x16ADE44
-        public ExpressionSystem get_ExpressionSystem()
-        {
-            return m_ExpressionSystem;
+            return SkeletonSystem.Root;
         }
 
         // RVA: 0x16ADE4C
         public bool get_IsLoli()
         {
-            return m_SkeletonSystem.ScaleSettings.isLoli;
+            return SkeletonSystem.ScaleSettings.isLoli;
         }
 
         // RVA: 0x16ADE74
@@ -88,13 +53,13 @@ namespace Oz.ActorModule
             VowelSetting vowelSettings,
             ExpressionEffectSettings expressionEffectSettings)
         {
-            m_Root = gameObject;
-            m_SkeletonSystem = new SkeletonSystem(m_Root.transform, skeletonPrefab, scaleSettings);
-            m_AvatarSystem = new AvatarSystem(m_SkeletonSystem, avatars);
-            m_MotionSystem = new MotionSystem(m_SkeletonSystem, controller);
-            m_ExpressionSystem = new ExpressionSystem(
-                m_SkeletonSystem,
-                m_AvatarSystem,
+            Root = gameObject;
+            SkeletonSystem = new SkeletonSystem(Root.transform, skeletonPrefab, scaleSettings);
+            AvatarSystem = new AvatarSystem(SkeletonSystem, avatars);
+            MotionSystem = new MotionSystem(SkeletonSystem, controller);
+            ExpressionSystem = new ExpressionSystem(
+                SkeletonSystem,
+                AvatarSystem,
                 facialSettings,
                 eyeSettings,
                 vowelSettings,
@@ -104,70 +69,70 @@ namespace Oz.ActorModule
         // RVA: 0x16AE098
         public void Create()
         {
-            m_SkeletonSystem.Create();
-            m_AvatarSystem.Create();
-            m_MotionSystem.Create();
-            m_ExpressionSystem.Create();
+            SkeletonSystem.Create();
+            AvatarSystem.Create();
+            MotionSystem.Create();
+            ExpressionSystem.Create();
         }
 
         // RVA: 0x16AE198
         public void Destroy()
         {
             m_Tasks.Clear();
-            m_ExpressionSystem.Destroy();
-            m_MotionSystem.Destroy();
-            m_AvatarSystem.Destroy();
-            m_SkeletonSystem.Destroy();
+            ExpressionSystem.Destroy();
+            MotionSystem.Destroy();
+            AvatarSystem.Destroy();
+            SkeletonSystem.Destroy();
             Object.Destroy(gameObject);
         }
 
         // RVA: 0x16AE3E8
         public void SetMaterialProperty(string name, float value)
         {
-            m_AvatarSystem.SetMaterialProperty(name, value);
+            AvatarSystem.SetMaterialProperty(name, value);
         }
 
         // RVA: 0x16AE514
         public void SetMaterialProperty(string name, Vector4 value)
         {
-            m_AvatarSystem.SetMaterialProperty(name, value);
+            AvatarSystem.SetMaterialProperty(name, value);
         }
 
         // RVA: 0x16AE660
         public void SetMaterialProperty(string name, Color value)
         {
-            m_AvatarSystem.SetMaterialProperty(name, value);
+            AvatarSystem.SetMaterialProperty(name, value);
         }
 
         // RVA: 0x16AE7AC
         public void ClearMaterialPropertyBlock()
         {
-            m_AvatarSystem.ClearMaterialPropertyBlock();
+            AvatarSystem.ClearMaterialPropertyBlock();
         }
 
         // RVA: 0x16AE8B8
         public void SetMaterialPropertyAlphaForRTRendering(float value)
         {
-            m_AvatarSystem.SetMaterialProperty("_Color", Color.white * value);
+            AvatarSystem.SetMaterialProperty("_Color", Color.white * value);
         }
 
         // RVA: 0x16AE93C
         public void ResetState()
         {
-            m_ExpressionSystem.Play(eFaceExpression.USUALLY, false);
-            m_ExpressionSystem.ExpressionAnimator.SetBlinkRatio(1f);
-            m_ExpressionSystem.ExpressionEffector.Stop();
+            ExpressionSystem.Play(eFaceExpression.USUALLY, false);
+            ExpressionSystem.ExpressionAnimator.SetBlinkRatio(1f);
+            ExpressionSystem.ExpressionEffector.Stop();
 
-            m_ExpressionSystem.ExpressionAnimator.Voice.ResetVowelInfo();
-            m_ExpressionSystem.ExpressionAnimator.Voice.ResetVowel();
+            ExpressionSystem.ExpressionAnimator.Voice.ResetVowelInfo();
+            ExpressionSystem.ExpressionAnimator.Voice.ResetVowel();
         }
 
         // RVA: 0x16AE9E0
         public void ResetBehaviour()
         {
             m_Tasks.Clear();
-            m_ExpressionSystem.StopEffect();
-            m_ExpressionSystem.CrossFade(eFaceExpression.USUALLY, false, 0.02f);
+            ExpressionSystem.StopEffect();
+            ExpressionSystem.CrossFade(eFaceExpression.USUALLY, false, 0.02f);
         }
 
         // RVA: 0x16AEAF0
@@ -181,7 +146,7 @@ namespace Oz.ActorModule
 
                 if (task.Check())
                 {
-                    if (task is MotionTask && m_MotionSystem.IsInTransition)
+                    if (task is MotionTask && MotionSystem.IsInTransition)
                     {
                         node = next;
                         continue;
@@ -198,9 +163,9 @@ namespace Oz.ActorModule
         // RVA: 0x16AED48
         private void LateUpdate()
         {
-            m_MotionSystem.LateUpdate();
-            m_SkeletonSystem.LateUpdate();
-            m_ExpressionSystem.LateUpdate();
+            MotionSystem.LateUpdate();
+            SkeletonSystem.LateUpdate();
+            ExpressionSystem.LateUpdate();
         }
 
         // RVA: 0x16AED9C
@@ -208,7 +173,7 @@ namespace Oz.ActorModule
         {
             if (behaviourData != null && behaviourData.AnimClip != null)
             {
-                m_ExpressionSystem.StopEffect();
+                ExpressionSystem.StopEffect();
                 m_Tasks.Clear();
                 PlayBehaviourInternal(behaviourData, onComplete, false);
             }
@@ -219,7 +184,7 @@ namespace Oz.ActorModule
         {
             if (behaviourData != null && behaviourData.AnimClip != null)
             {
-                m_ExpressionSystem.StopEffect();
+                ExpressionSystem.StopEffect();
                 m_Tasks.Clear();
                 PlayBehaviourInternal(behaviourData, onComplete, true);
             }
@@ -234,7 +199,7 @@ namespace Oz.ActorModule
             }
 
             MotionTask motionTask = new MotionTask(
-                m_MotionSystem,
+                MotionSystem,
                 behaviourData.AnimClip,
                 behaviourData.CrossFadeTime,
                 Time.time,
@@ -254,7 +219,7 @@ namespace Oz.ActorModule
                 {
                     ExpressionEvent expressionEvent = behaviourData.ExpressionEvents[i];
                     m_Tasks.AddLast(new ExpressionTask(
-                        m_ExpressionSystem, expressionEvent, Time.time + length * expressionEvent.m_Time));
+                        ExpressionSystem, expressionEvent, Time.time + length * expressionEvent.m_Time));
                 }
             }
 
@@ -264,7 +229,7 @@ namespace Oz.ActorModule
                 {
                     ExpressionEffectEvent effectEvent = behaviourData.ExpressionEffectEvents[i];
                     m_Tasks.AddLast(new ExpressionEffectTask(
-                        m_ExpressionSystem, effectEvent, Time.time + length * effectEvent.m_Time));
+                        ExpressionSystem, effectEvent, Time.time + length * effectEvent.m_Time));
                 }
             }
 

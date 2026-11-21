@@ -13,41 +13,28 @@ namespace Oz.Timeline
 {
     public class ExpressionMixerPlayableBehaviour : PlayableBehaviour
     {
-        private ExpressionAnimator _bindingAnimator;
         public ExpressionAnimator bindingAnimator { get; set; }
-
-        // RVA: 0x13D76A4
-        public ExpressionAnimator get_bindingAnimator()
-        {
-            return _bindingAnimator;
-        }
-
-        // RVA: 0x13D76AC
-        public void set_bindingAnimator(ExpressionAnimator value)
-        {
-            _bindingAnimator = value;
-        }
 
         // RVA: 0x13D76B4
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             base.ProcessFrame(playable, info, playerData);
 
-            if (_bindingAnimator == null)
+            if (bindingAnimator == null)
             {
                 GameObject go = playerData as GameObject;
                 if (go != null)
                 {
-                    _bindingAnimator = go.GetComponent<ExpressionAnimator>();
+                    bindingAnimator = go.GetComponent<ExpressionAnimator>();
                 }
             }
 
-            if (_bindingAnimator == null)
+            if (bindingAnimator == null)
             {
                 return;
             }
 
-            _bindingAnimator.ClearChanges();
+            bindingAnimator.ClearChanges();
 
             int inputCount = playable.GetInputCount();
             for (int i = 0; i < inputCount; i++)
@@ -60,7 +47,7 @@ namespace Oz.Timeline
                     ExpressionPlayableBehaviour behaviour = input.GetBehaviour();
                     if (behaviour != null)
                     {
-                        _bindingAnimator.MixExpression(behaviour.expression, behaviour.mouthOpen, weight);
+                        bindingAnimator.MixExpression(behaviour.expression, behaviour.mouthOpen, weight);
                     }
                 }
             }
@@ -69,9 +56,9 @@ namespace Oz.Timeline
         // RVA: 0x13D796C
         public override void OnGraphStop(Playable playable)
         {
-            if (_bindingAnimator != null)
+            if (bindingAnimator != null)
             {
-                _bindingAnimator.ClearChanges();
+                bindingAnimator.ClearChanges();
             }
         }
 

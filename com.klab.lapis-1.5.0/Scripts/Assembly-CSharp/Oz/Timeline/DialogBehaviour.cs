@@ -22,7 +22,7 @@ namespace Oz.Timeline
         public Dialog dialogData { get; }
 
         // RVA: 0x13D6DE4
-        public override bool get_Await()
+        public bool get_Await()
         {
             if (ScenarioKit.Instance != null)
             {

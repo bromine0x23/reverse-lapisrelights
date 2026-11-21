@@ -26,17 +26,6 @@ namespace Oz.Framework.SoundModule
         private static GameObject s_WwiseGlobal;
         public static SoundManager Instance { get; set; }
 
-        // RVA: 0x2EE5D40
-        public static SoundManager get_Instance()
-        {
-            return Instance;
-        }
-
-        // RVA: 0x2EE5D90
-        private static void set_Instance(SoundManager value)
-        {
-            Instance = value;
-        }
 
         // RVA: 0x2EE5DE4
         private void Awake()

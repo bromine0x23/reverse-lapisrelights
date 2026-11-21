@@ -30,41 +30,11 @@ namespace Oz.Framework.LuaModule
         public LuaState luaState { get; set; }
         public string LuaDesKey { get; set; }
 
-        // RVA: 0x1401270
-        private static LuaManager get_Instance()
-        {
-            return Instance;
-        }
 
-        // RVA: 0x14012C0
-        private static void set_Instance(LuaManager value)
-        {
-            Instance = value;
-        }
 
-        // RVA: 0x1401314
-        public LuaState get_luaState()
-        {
-            return _luaState;
-        }
 
-        // RVA: 0x140131C
-        public void set_luaState(LuaState value)
-        {
-            _luaState = value;
-        }
 
-        // RVA: 0x1401324
-        public string get_LuaDesKey()
-        {
-            return _LuaDesKey;
-        }
 
-        // RVA: 0x140132C
-        public void set_LuaDesKey(string value)
-        {
-            _LuaDesKey = value;
-        }
 
         // RVA: 0x1401334
         public void Awake()
@@ -77,9 +47,9 @@ namespace Oz.Framework.LuaModule
             LuaClassMonitor.Clear();
             InitLoader();
 
-            _luaState = new LuaState();
+            luaState = new LuaState();
             OpenLibs();
-            _luaState.LuaSetTop(0);
+            luaState.LuaSetTop(0);
             Bind();
         }
 
@@ -131,13 +101,13 @@ namespace Oz.Framework.LuaModule
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
-            if (_luaState != null)
+            if (luaState != null)
             {
-                _luaState.Call("OnApplicationQuit", false);
+                luaState.Call("OnApplicationQuit", false);
                 DetachProfiler();
 
-                LuaState state = _luaState;
-                _luaState = null;
+                LuaState state = luaState;
+                luaState = null;
 
                 if (loop != null)
                 {
@@ -170,9 +140,9 @@ namespace Oz.Framework.LuaModule
         // RVA: 0x1401BB4
         protected virtual void OpenLibs()
         {
-            _luaState.OpenLibs(LuaDLL.luaopen_pb);
-            _luaState.OpenLibs(LuaDLL.luaopen_struct);
-            _luaState.OpenLibs(LuaDLL.luaopen_lpeg);
+            luaState.OpenLibs(LuaDLL.luaopen_pb);
+            luaState.OpenLibs(LuaDLL.luaopen_struct);
+            luaState.OpenLibs(LuaDLL.luaopen_lpeg);
 
             if (LuaConst.openLuaSocket)
             {
@@ -204,21 +174,21 @@ namespace Oz.Framework.LuaModule
         {
             LuaConst.openLuaSocket = true;
 
-            _luaState.BeginPreLoad();
-            _luaState.RegFunction("socket.core", LuaOpen_Socket_Core);
-            _luaState.RegFunction("mime.core", LuaOpen_Mime_Core);
-            _luaState.EndPreLoad();
+            luaState.BeginPreLoad();
+            luaState.RegFunction("socket.core", LuaOpen_Socket_Core);
+            luaState.RegFunction("mime.core", LuaOpen_Mime_Core);
+            luaState.EndPreLoad();
         }
 
         // RVA: 0x1402000
         protected void OpenCJson()
         {
-            _luaState.LuaGetField(LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");
-            _luaState.OpenLibs(LuaDLL.luaopen_cjson);
-            _luaState.LuaSetField(-2, "cjson");
+            luaState.LuaGetField(LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");
+            luaState.OpenLibs(LuaDLL.luaopen_cjson);
+            luaState.LuaSetField(-2, "cjson");
 
-            _luaState.OpenLibs(LuaDLL.luaopen_cjson_safe);
-            _luaState.LuaSetField(-2, "cjson.safe");
+            luaState.OpenLibs(LuaDLL.luaopen_cjson_safe);
+            luaState.LuaSetField(-2, "cjson.safe");
         }
 
         // RVA: 0x1401E64
@@ -237,19 +207,19 @@ namespace Oz.Framework.LuaModule
 
             if (!string.IsNullOrEmpty(LuaConst.zbsDir))
             {
-                _luaState.AddSearchPath(LuaConst.zbsDir, false);
+                luaState.AddSearchPath(LuaConst.zbsDir, false);
             }
 
-            _luaState.LuaDoString(
+            luaState.LuaDoString(
                 string.Format("DebugServerIp = '{0}'", ip), "@LuaClient.cs");
         }
 
         // RVA: 0x1402154
         protected virtual void Bind()
         {
-            LuaBinder.Bind(_luaState);
+            LuaBinder.Bind(luaState);
             DelegateFactory.Init();
-            LuaCoroutine.Register(_luaState, this);
+            LuaCoroutine.Register(luaState, this);
         }
 
         // RVA: 0x14003D0
@@ -257,9 +227,9 @@ namespace Oz.Framework.LuaModule
         {
             yield return GetCommonKey();
 
-            _luaState.Start();
+            luaState.Start();
             StartLooper();
-            _luaState.DoFile("Main.lua");
+            luaState.DoFile("Main.lua");
             CallMain();
         }
 
@@ -267,13 +237,13 @@ namespace Oz.Framework.LuaModule
         protected void StartLooper()
         {
             loop = gameObject.AddComponent<LuaLooper>();
-            loop.luaState = _luaState;
+            loop.luaState = luaState;
         }
 
         // RVA: 0x1402298
         protected virtual void CallMain()
         {
-            LuaFunction function = _luaState.GetFunction("Main", true);
+            LuaFunction function = luaState.GetFunction("Main", true);
             function.Call();
             function.Dispose();
         }
@@ -281,9 +251,9 @@ namespace Oz.Framework.LuaModule
         // RVA: 0x1402318
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (_luaState != null)
+            if (luaState != null)
             {
-                LuaFunction function = _luaState.GetFunction("OnSceneLoaded", true);
+                LuaFunction function = luaState.GetFunction("OnSceneLoaded", true);
                 if (function != null)
                 {
                     function.Call();
@@ -297,14 +267,14 @@ namespace Oz.Framework.LuaModule
         // RVA: 0x14024FC
         private void OnSceneUnloaded(Scene scene)
         {
-            if (_luaState != null)
+            if (luaState != null)
             {
-                _luaState.RefreshDelegateMap();
-                _luaState.LuaGC(LuaGCOptions.LUA_GCCOLLECT, 0);
+                luaState.RefreshDelegateMap();
+                luaState.LuaGC(LuaGCOptions.LUA_GCCOLLECT, 0);
                 ResourceManager.UnloadAll(false);
                 Resources.UnloadUnusedAssets();
 
-                LuaFunction function = _luaState.GetFunction("OnSceneUnloaded", true);
+                LuaFunction function = luaState.GetFunction("OnSceneUnloaded", true);
                 if (function != null)
                 {
                     function.Call();
@@ -320,7 +290,7 @@ namespace Oz.Framework.LuaModule
         {
             if (Instance != null)
             {
-                Instance._luaState.DoString(chunk, "LuaState.cs");
+                Instance.luaState.DoString(chunk, "LuaState.cs");
             }
         }
 
@@ -329,7 +299,7 @@ namespace Oz.Framework.LuaModule
         {
             if (profiler == null)
             {
-                profiler = _luaState.Require<LuaTable>("UnityEngine.Profiler");
+                profiler = luaState.Require<LuaTable>("UnityEngine.Profiler");
                 profiler.Call("start", profiler);
             }
         }

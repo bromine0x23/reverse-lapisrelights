@@ -2,7 +2,7 @@
 //  Lapis Re:Lights 1.5.0 — Assembly-CSharp.dll
 //  Oz.Timeline.AvatarPlayableBehaviour
 //  来源：libil2cpp.so (ARM64) Hex-Rays 伪代码 + Il2CppDumper 元数据
-//        Equip: _equiped = true，avatarPart 非空时记录 PutOn 产生的冲突部件
+//        Equip: Equiped = true，avatarPart 非空时记录 PutOn 产生的冲突部件
 //        Unequip: IsEquiped 才 TakeOff，并重新 PutOn 冲突部件
 // =============================================================================
 
@@ -15,31 +15,18 @@ namespace Oz.Timeline
     {
         public AvatarPart avatarPart;
         private AvatarPart[] conflictAvatarParts;
-        private bool _equiped;
         public bool Equiped { get; set; }
-
-        // RVA: 0x13D667C
-        public bool get_Equiped()
-        {
-            return _equiped;
-        }
-
-        // RVA: 0x13D6684
-        public void set_Equiped(bool value)
-        {
-            _equiped = value;
-        }
 
         // RVA: 0x13D6690
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
-            _equiped = false;
+            Equiped = false;
         }
 
         // RVA: 0x13D64D8
         public void Equip(AvatarSystem avatarSystem)
         {
-            _equiped = true;
+            Equiped = true;
             if (avatarPart != null)
             {
                 conflictAvatarParts = avatarSystem.PutOn(avatarPart);

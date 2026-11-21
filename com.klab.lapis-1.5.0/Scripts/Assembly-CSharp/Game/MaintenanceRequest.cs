@@ -27,7 +27,8 @@ namespace Game
         public const int PlayerIdFieldNumber = 1;
         private long playerId_;
         public static MessageParser<MaintenanceRequest> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public long PlayerId { get; set; }
 
@@ -46,7 +47,7 @@ namespace Game
         // RVA: 0x1A41E5C
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1A41EB8

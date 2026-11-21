@@ -15,28 +15,16 @@ namespace Oz.Timeline
     public class EyeTargetPlayableAsset : PlayableAsset, ITimelineClipAsset
     {
         [SerializeField]
-        private ExpressionSystem <expressionSystem>k__BackingField;
         public ExposedReference<Transform> lookAtTarget;
         public ClipCaps clipCaps { get; }
         public ExpressionSystem expressionSystem { get; set; }
-
         // RVA: 0x13D8610
         public ClipCaps get_clipCaps()
         {
             return ClipCaps.None;
         }
 
-        // RVA: 0x13D8618
-        public ExpressionSystem get_expressionSystem()
-        {
-            return expressionSystem;
-        }
 
-        // RVA: 0x13D8620
-        public void set_expressionSystem(ExpressionSystem value)
-        {
-            expressionSystem = value;
-        }
 
         // RVA: 0x13D8628
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)

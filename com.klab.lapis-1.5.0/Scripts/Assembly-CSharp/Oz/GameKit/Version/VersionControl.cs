@@ -55,45 +55,14 @@ namespace Oz.GameKit.Version
         public static string NoticeKey { get; set; }
         public static PatchInfo PatchInfo { get; set; }
         public static IPackageManifest Manifest { get; set; }
-        internal List<IPackageInfo> ExtractList { get; set; }
-        internal List<IPackageInfo> UpdateList { get; set; }
-        internal List<IPackageInfo> DeleteList { get; set; }
+        internal List<IPackageInfo> ExtractList { get; private set; }
+        internal List<IPackageInfo> UpdateList { get; private set; }
+        internal List<IPackageInfo> DeleteList { get; private set; }
 
-        // RVA: 0x18917CC
-        public static List<string> get_CdnDomains()
-        {
-            return CdnDomains;
-        }
 
-        // RVA: 0x1891834
-        private static void set_CdnDomains(List<string> value)
-        {
-            CdnDomains = value;
-        }
 
-        // RVA: 0x18918A0
-        public static List<string> get_ServerListURLs()
-        {
-            return ServerListURLs;
-        }
 
-        // RVA: 0x1891908
-        private static void set_ServerListURLs(List<string> value)
-        {
-            ServerListURLs = value;
-        }
 
-        // RVA: 0x1891974
-        public static string get_ResVersion()
-        {
-            return ResVersion;
-        }
-
-        // RVA: 0x18919DC
-        private static void set_ResVersion(string value)
-        {
-            ResVersion = value;
-        }
 
         // RVA: 0x1891A48
         public static string get_StrVersion()
@@ -107,77 +76,17 @@ namespace Oz.GameKit.Version
             return "0";
         }
 
-        // RVA: 0x1891B98
-        public static string get_NoticeKey()
-        {
-            return NoticeKey;
-        }
 
-        // RVA: 0x1891C00
-        private static void set_NoticeKey(string value)
-        {
-            NoticeKey = value;
-        }
 
-        // RVA: 0x1891C6C
-        public static PatchInfo get_PatchInfo()
-        {
-            return PatchInfo;
-        }
 
-        // RVA: 0x1891CD4
-        private static void set_PatchInfo(PatchInfo value)
-        {
-            PatchInfo = value;
-        }
 
-        // RVA: 0x1891D40
-        public static IPackageManifest get_Manifest()
-        {
-            return Manifest;
-        }
 
-        // RVA: 0x1891DA8
-        private static void set_Manifest(IPackageManifest value)
-        {
-            Manifest = value;
-        }
 
-        // RVA: 0x1891E14
-        internal List<IPackageInfo> get_ExtractList()
-        {
-            return ExtractList;
-        }
 
-        // RVA: 0x1891E1C
-        private void set_ExtractList(List<IPackageInfo> value)
-        {
-            ExtractList = value;
-        }
 
-        // RVA: 0x1891E24
-        internal List<IPackageInfo> get_UpdateList()
-        {
-            return UpdateList;
-        }
 
-        // RVA: 0x1891E2C
-        private void set_UpdateList(List<IPackageInfo> value)
-        {
-            UpdateList = value;
-        }
 
-        // RVA: 0x1891E34
-        internal List<IPackageInfo> get_DeleteList()
-        {
-            return DeleteList;
-        }
 
-        // RVA: 0x1891E3C
-        private void set_DeleteList(List<IPackageInfo> value)
-        {
-            DeleteList = value;
-        }
 
         // RVA: 0x188C970
         public void add_onFetchVersionBegin(Action value)

@@ -3,8 +3,8 @@
 //  Oz.Framework.NetworkModule.NetworkManager
 //  来源：libil2cpp.so (ARM64) Hex-Rays 伪代码 + Il2CppDumper 元数据
 //
-//  说明：本类体量较大（约 114KB 伪代码）。已还原成员与待还原成员的 RVA
-//  均标注在方法上，未还原部分保留同签名占位，便于后续按 RVA 补齐。
+//  说明：已按成员 RVA 还原连接管理、心跳、HTTP 旁路以及公告/维护弹窗流程；
+//  方法体来源于 libil2cpp.so 反汇编，RVA 标注在对应方法上。
 // =============================================================================
 
 using System;

@@ -27,7 +27,7 @@ namespace Oz.Timeline
                     TrackAssetExtensions.GetBindingComponent(this, director) as ExpressionAnimator;
                 if (binding != null)
                 {
-                    behaviour._bindingAnimator = binding;
+                    behaviour.bindingAnimator = binding;
                 }
             }
             return playable;

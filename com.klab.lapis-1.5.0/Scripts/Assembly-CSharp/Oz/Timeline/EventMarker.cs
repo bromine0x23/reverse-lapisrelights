@@ -2,7 +2,7 @@
 //  Lapis Re:Lights 1.5.0 — Assembly-CSharp.dll
 //  Oz.Timeline.EventMarker
 //  来源：libil2cpp.so (ARM64) Hex-Rays 伪代码 + Il2CppDumper 元数据
-//        get_id    : new PropertyName(m_EventName ?? string.Empty)
+//        get_id    : new PropertyName(EventName ?? string.Empty)
 //        get_flags : TriggerInEditMode (+ Retroactive) (+ TriggerOnce)
 // =============================================================================
 
@@ -13,71 +13,19 @@ namespace Oz.Timeline
 {
     public class EventMarker : Marker, INotification, INotificationOptionProvider
     {
-        [SerializeField]
-        private bool m_Retroactive;
-        [SerializeField]
-        private bool m_EmitOnce;
-        [SerializeField]
-        private string m_EventName;
-        [SerializeField]
-        private EventData m_EventData;
+        [field: SerializeField]
         public bool Retroactive { get; set; }
+        [field: SerializeField]
         public bool EmitOnce { get; set; }
+        [field: SerializeField]
         public string EventName { get; set; }
+        [field: SerializeField]
         public EventData EventData { get; set; }
-
-        // RVA: 0x13D75B4
-        public bool get_Retroactive()
-        {
-            return Retroactive;
-        }
-
-        // RVA: 0x13D75BC
-        public void set_Retroactive(bool value)
-        {
-            Retroactive = value;
-        }
-
-        // RVA: 0x13D75C8
-        public bool get_EmitOnce()
-        {
-            return EmitOnce;
-        }
-
-        // RVA: 0x13D75D0
-        public void set_EmitOnce(bool value)
-        {
-            EmitOnce = value;
-        }
-
-        // RVA: 0x13D75DC
-        public string get_EventName()
-        {
-            return EventName;
-        }
-
-        // RVA: 0x13D75E4
-        public void set_EventName(string value)
-        {
-            EventName = value;
-        }
-
-        // RVA: 0x13D75EC
-        public EventData get_EventData()
-        {
-            return EventData;
-        }
-
-        // RVA: 0x13D75F4
-        public void set_EventData(EventData value)
-        {
-            EventData = value;
-        }
 
         // RVA: 0x13D75FC
         PropertyName INotification.id
         {
-            get { return new PropertyName(m_EventName ?? string.Empty); }
+            get { return new PropertyName(EventName ?? string.Empty); }
         }
 
         // RVA: 0x13D7674
@@ -85,10 +33,10 @@ namespace Oz.Timeline
         {
             get
             {
-                NotificationFlags flags = m_Retroactive
+                NotificationFlags flags = Retroactive
                     ? NotificationFlags.TriggerInEditMode | NotificationFlags.Retroactive
                     : NotificationFlags.TriggerInEditMode;
-                if (m_EmitOnce)
+                if (EmitOnce)
                 {
                     flags |= NotificationFlags.TriggerOnce;
                 }

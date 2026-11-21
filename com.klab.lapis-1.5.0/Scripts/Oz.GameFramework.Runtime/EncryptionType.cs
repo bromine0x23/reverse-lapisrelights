@@ -159,7 +159,6 @@ namespace Oz.GameFramework.Runtime
         /// <summary>64 位混淆值（双密钥 XOR）。</summary>
         public class Value64
         {
-            private UnionValue64 _value;
             private uint _key0;
             private uint _key1;
 

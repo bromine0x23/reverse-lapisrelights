@@ -42,17 +42,7 @@ namespace Oz.Framework.UIModule
         public static StandaloneInputModule InputModule { get; }
         public static Camera UICamera { get; }
 
-        // RVA: 0x2EEA5CC
-        private static UIManager get_Instance()
-        {
-            return Instance;
-        }
 
-        // RVA: 0x2EEA61C
-        private static void set_Instance(UIManager value)
-        {
-            Instance = value;
-        }
 
         // RVA: 0x2EEA670
         public static RectTransform get_RootCanvasTransform()

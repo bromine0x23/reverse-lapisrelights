@@ -68,7 +68,6 @@ namespace Oz.Framework.NetworkModule
 
         public class NodeMsg
         {
-            public Channel Channel;
             public int Key;
             public byte[] Body;
             public int Group;

@@ -16,38 +16,17 @@ namespace Oz.Timeline
     {
         public AnimationCurve blinkCurve;
         public ClipCaps clipCaps { get; }
-        public int ClipIdx { get; set; }
-        public EyeBlinkMixerPlayableBehaviour Mixer { get; set; }
-
+        public int ClipIdx { get; internal set; }
+        public EyeBlinkMixerPlayableBehaviour Mixer { get; internal set; }
         // RVA: 0x13D8048
         public ClipCaps get_clipCaps()
         {
             return ClipCaps.None;
         }
 
-        // RVA: 0x13D8050
-        public int get_ClipIdx()
-        {
-            return ClipIdx;
-        }
 
-        // RVA: 0x13D8058
-        internal void set_ClipIdx(int value)
-        {
-            ClipIdx = value;
-        }
 
-        // RVA: 0x13D8060
-        public EyeBlinkMixerPlayableBehaviour get_Mixer()
-        {
-            return Mixer;
-        }
 
-        // RVA: 0x13D8068
-        internal void set_Mixer(EyeBlinkMixerPlayableBehaviour value)
-        {
-            Mixer = value;
-        }
 
         // RVA: 0x13D8070
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)

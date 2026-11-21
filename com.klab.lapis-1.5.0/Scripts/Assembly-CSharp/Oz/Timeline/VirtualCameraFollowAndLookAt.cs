@@ -20,19 +20,22 @@ namespace Oz.Timeline
         private CinemachineVirtualCamera _virtualCamera;
 
         // RVA: 0x13DE210
-        public CinemachineVirtualCamera get_VirtualCamera()
+        public CinemachineVirtualCamera VirtualCamera
         {
-            if (_virtualCamera == null)
+            get
             {
-                _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+                if (_virtualCamera == null)
+                {
+                    _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+                }
+                return _virtualCamera;
             }
-            return _virtualCamera;
         }
 
         // RVA: 0x13DE2A8
         private void Start()
         {
-            ApplyLookAt(get_VirtualCamera());
+            ApplyLookAt(VirtualCamera);
         }
 
         // RVA: 0x13DE2D0

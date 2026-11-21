@@ -31,8 +31,6 @@ namespace Oz.ActorModule
         private float m_TimeRemaining;
         [SerializeField]
         private float m_TimeInterval;
-        [SerializeField]
-        private bool m_IsBlinkActive;
         private Coroutine blinkRoutine;
         [SerializeField]
         private FacialSettings m_FacialSettings;
@@ -65,25 +63,12 @@ namespace Oz.ActorModule
         [SerializeField]
         private bool m_NowMouthOpen;
         private FaceTransition m_Transition;
-        private LipSync m_LipSyncVoice;
-        private MaterialPropertyBlock m_MaterialPropertyBlock;
-        public bool IsBlinkActive { get; set; }
+        [field: SerializeField]
+        public bool IsBlinkActive { get; private set; }
         public bool IsBlinkAnimating { get; }
-        public VoiceVowel Voice { get; set; }
-        public LipSync LipSyncVoice { get; }
-        public MaterialPropertyBlock MaterialPropertyBlock { get; }
-
-        // RVA: 0x16B0DA8
-        public bool get_IsBlinkActive()
-        {
-            return m_IsBlinkActive;
-        }
-
-        // RVA: 0x16B0DB0
-        private void set_IsBlinkActive(bool value)
-        {
-            m_IsBlinkActive = value;
-        }
+        public VoiceVowel Voice { get; private set; }
+        public LipSync LipSyncVoice { get; private set; }
+        public MaterialPropertyBlock MaterialPropertyBlock { get; private set; }
 
         // RVA: 0x16B0DBC
         public bool get_IsBlinkAnimating()
@@ -91,36 +76,24 @@ namespace Oz.ActorModule
             return m_TimeRemaining > 0f;
         }
 
-        // RVA: 0x16B0DCC
-        public VoiceVowel get_Voice()
-        {
-            return Voice;
-        }
-
-        // RVA: 0x16B0DD4
-        private void set_Voice(VoiceVowel value)
-        {
-            Voice = value;
-        }
-
         // RVA: 0x16B0DDC
         public LipSync get_LipSyncVoice()
         {
-            if (m_LipSyncVoice == null && m_FaceSMR != null)
+            if (LipSyncVoice == null && m_FaceSMR != null)
             {
-                m_LipSyncVoice = new LipSync(m_FaceSMR);
+                LipSyncVoice = new LipSync(m_FaceSMR);
             }
-            return m_LipSyncVoice;
+            return LipSyncVoice;
         }
 
         // RVA: 0x16B0E98
         public MaterialPropertyBlock get_MaterialPropertyBlock()
         {
-            if (m_MaterialPropertyBlock == null)
+            if (MaterialPropertyBlock == null)
             {
-                m_MaterialPropertyBlock = new MaterialPropertyBlock();
+                MaterialPropertyBlock = new MaterialPropertyBlock();
             }
-            return m_MaterialPropertyBlock;
+            return MaterialPropertyBlock;
         }
 
         // RVA: 0x16B0F04
@@ -147,7 +120,7 @@ namespace Oz.ActorModule
 
             if (m_FaceSMR != null)
             {
-                m_LipSyncVoice = new LipSync(m_FaceSMR);
+                LipSyncVoice = new LipSync(m_FaceSMR);
             }
         }
 
@@ -174,7 +147,7 @@ namespace Oz.ActorModule
                 m_FaceSMR = face.GetComponent<SkinnedMeshRenderer>();
                 if (m_FaceSMR != null)
                 {
-                    m_LipSyncVoice = new LipSync(m_FaceSMR);
+                    LipSyncVoice = new LipSync(m_FaceSMR);
                 }
             }
         }
@@ -250,7 +223,7 @@ namespace Oz.ActorModule
                 m_NowExpression = (int)eFaceExpression.USUALLY;
             }
             SetExpression(m_NowExpression, m_NowMouthOpen);
-            m_IsBlinkActive = true;
+            IsBlinkActive = true;
 
             if (m_VowelSetting != null && m_FaceSMR != null)
             {
@@ -636,14 +609,14 @@ namespace Oz.ActorModule
 
             SetExpression(expression, mouthOpen);
 
-            if (m_IsBlinkActive && state.AutoBlink && m_NowExpression != expression && m_FacialSettings != null)
+            if (IsBlinkActive && state.AutoBlink && m_NowExpression != expression && m_FacialSettings != null)
             {
                 m_TimeRemaining = m_FacialSettings.BlinkDuration;
             }
 
             m_NowExpression = expression;
             m_NowMouthOpen = mouthOpen;
-            m_IsBlinkActive = state.AutoBlink;
+            IsBlinkActive = state.AutoBlink;
         }
 
         // RVA: 0x16B2C34
@@ -685,7 +658,7 @@ namespace Oz.ActorModule
         // RVA: 0x16B2C28
         public void SetAutoBlink(bool flag)
         {
-            m_IsBlinkActive = flag;
+            IsBlinkActive = flag;
         }
 
         // RVA: 0x16B2E44
@@ -697,7 +670,7 @@ namespace Oz.ActorModule
         // RVA: 0x16B1FD8
         private void UpdateBlink()
         {
-            if (m_FacialSettings != null && m_IsBlinkActive)
+            if (m_FacialSettings != null && IsBlinkActive)
             {
                 m_TimeInterval -= Time.deltaTime;
                 if (m_TimeInterval <= 0f)

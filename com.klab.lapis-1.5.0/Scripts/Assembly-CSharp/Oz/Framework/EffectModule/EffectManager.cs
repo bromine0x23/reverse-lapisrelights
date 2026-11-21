@@ -26,17 +26,6 @@ namespace Oz.Framework.EffectModule
         private GameObject m_CacheNode;
         private static EffectManager Instance { get; set; }
 
-        // RVA: 0x13F9908
-        private static EffectManager get_Instance()
-        {
-            return Instance;
-        }
-
-        // RVA: 0x13F9958
-        private static void set_Instance(EffectManager value)
-        {
-            Instance = value;
-        }
 
         // RVA: 0x13F99AC
         private void Awake()

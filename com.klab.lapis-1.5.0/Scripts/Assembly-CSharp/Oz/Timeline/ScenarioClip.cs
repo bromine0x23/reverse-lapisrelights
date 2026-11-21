@@ -15,7 +15,7 @@ namespace Oz.Timeline
     public class ScenarioClip : Clip
     {
         // RVA: 0x13DBEF0
-        public override ClipCaps get_clipCaps()
+        public ClipCaps get_clipCaps()
         {
             return ClipCaps.ClipIn;
         }

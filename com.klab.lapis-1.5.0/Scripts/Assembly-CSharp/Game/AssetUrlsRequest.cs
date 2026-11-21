@@ -34,7 +34,8 @@ namespace Game
         public const int ResVersionFieldNumber = 4;
         private string resVersion_;
         public static MessageParser<AssetUrlsRequest> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public string Platform { get; set; }
         public string Lang { get; set; }
@@ -56,7 +57,7 @@ namespace Game
         // RVA: 0x1A39514
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1A39570

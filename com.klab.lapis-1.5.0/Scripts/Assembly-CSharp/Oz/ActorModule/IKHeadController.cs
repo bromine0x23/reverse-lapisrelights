@@ -27,23 +27,29 @@ namespace Oz.ActorModule
         private float m_TimelineInputWeight;
 
         // RVA: 0x13F168C
-        public Vector3 get_ForwardTarget()
+        public Vector3 ForwardTarget
         {
-            if (m_Head == null)
+            get
             {
-                return Vector3.zero;
+                if (m_Head == null)
+                {
+                    return Vector3.zero;
+                }
+                return m_Head.position + m_Head.up;
             }
-            return m_Head.position + m_Head.up;
         }
 
         // RVA: 0x13F17D0
-        public Vector3 get_TargetPos()
+        public Vector3 TargetPos
         {
-            if (m_Head == null || m_Target == null)
+            get
             {
-                return Vector3.zero;
+                if (m_Head == null || m_Target == null)
+                {
+                    return Vector3.zero;
+                }
+                return m_Head.position + Vector3.Normalize(m_Target.position - m_Head.position);
             }
-            return m_Head.position + Vector3.Normalize(m_Target.position - m_Head.position);
         }
 
         // RVA: 0x13F1998
@@ -63,7 +69,7 @@ namespace Oz.ActorModule
                 m_Head = animator.GetBoneTransform(HumanBodyBones.Head);
                 if (m_Head != null)
                 {
-                    m_Position = get_ForwardTarget();
+                    m_Position = ForwardTarget;
                 }
             }
         }
@@ -103,12 +109,12 @@ namespace Oz.ActorModule
             if (target != null)
             {
                 m_Weight = -1f;
-                m_Position = Vector3.Lerp(get_ForwardTarget(), get_TargetPos(), m_Weight);
+                m_Position = Vector3.Lerp(ForwardTarget, TargetPos, m_Weight);
             }
             else
             {
                 m_Weight = 0f;
-                m_Position = get_ForwardTarget();
+                m_Position = ForwardTarget;
             }
         }
 
@@ -143,7 +149,7 @@ namespace Oz.ActorModule
                 float prevWeight = m_Weight;
                 m_Weight = m_TargetWeight;
 
-                Vector3 blended = Vector3.Lerp(get_ForwardTarget(), get_TargetPos(), m_Weight);
+                Vector3 blended = Vector3.Lerp(ForwardTarget, TargetPos, m_Weight);
                 if (prevWeight >= 0f)
                 {
                     m_Position = Vector3.SmoothDamp(m_Position, blended, ref m_PositionVelocity, m_SmoothTime);
@@ -158,7 +164,7 @@ namespace Oz.ActorModule
             }
             else
             {
-                m_Position = Vector3.SmoothDamp(m_Position, get_ForwardTarget(), ref m_PositionVelocity, m_SmoothTime);
+                m_Position = Vector3.SmoothDamp(m_Position, ForwardTarget, ref m_PositionVelocity, m_SmoothTime);
                 m_Animator.SetLookAtPosition(m_Position);
                 m_Weight = Mathf.SmoothDamp(m_Weight, 0f, ref m_WeightVelocity, m_SmoothTime);
                 m_Animator.SetLookAtWeight(w, WeightParts.x, WeightParts.y, WeightParts.z, WeightParts.w);

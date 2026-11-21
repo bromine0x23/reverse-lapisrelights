@@ -79,7 +79,6 @@ namespace Oz.Framework
         public class EntryEnum
         {
             public eAnimEventType eventID;
-            public TriggerEvent callback;
 
             // RVA: 0x13F74B8
             public EntryEnum()
@@ -89,8 +88,6 @@ namespace Oz.Framework
 
         public class EntryString
         {
-            public string eventID;
-            public TriggerEvent callback;
 
             // RVA: 0x13F766C
             public EntryString()

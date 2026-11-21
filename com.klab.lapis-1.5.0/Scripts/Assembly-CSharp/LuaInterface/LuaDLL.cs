@@ -1090,7 +1090,7 @@ namespace LuaInterface
         }
 
         // RVA: 0x2292628
-        private static void .cctor()
+        static LuaDLL()
         {
             version = "1.0.7.386";
             LUA_MULTRET = -1;

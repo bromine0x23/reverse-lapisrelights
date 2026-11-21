@@ -27,7 +27,8 @@ namespace Game
         public const int UrlFieldNumber = 1;
         private string url_;
         public static MessageParser<RefundUrlResponse> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public string Url { get; set; }
 
@@ -46,7 +47,7 @@ namespace Game
         // RVA: 0x1927CBC
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1927D18

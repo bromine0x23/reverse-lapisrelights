@@ -29,7 +29,7 @@ namespace Oz.Timeline
                 Component binding = TrackAssetExtensions.GetBindingComponent(this, director);
                 if (binding != null)
                 {
-                    behaviour._bindingComponent = binding.GetComponent<ExpressionAnimator>();
+                    behaviour.bindingComponent = binding.GetComponent<ExpressionAnimator>();
                 }
             }
 

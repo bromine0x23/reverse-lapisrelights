@@ -31,7 +31,8 @@ namespace Game
         public const int CodeFieldNumber = 3;
         private MaintenanceResponse.Types.ResponseCode code_;
         public static MessageParser<MaintenanceResponse> Parser { get; }
-        public static MessageDescriptor Descriptor { get; }
+        private static MessageDescriptor _Descriptor;
+        public static MessageDescriptor Descriptor { get { return _Descriptor; } }
         private MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor { get; }
         public string Body { get; set; }
         public string RefundUrl { get; set; }
@@ -52,7 +53,7 @@ namespace Game
         // RVA: 0x1A425C4
         private MessageDescriptor pb::Google.Protobuf.IMessage.get_Descriptor()
         {
-            return Descriptor;
+            return _Descriptor;
         }
 
         // RVA: 0x1A42620

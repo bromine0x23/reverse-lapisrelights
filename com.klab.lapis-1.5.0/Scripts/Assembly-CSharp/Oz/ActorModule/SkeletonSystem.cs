@@ -22,19 +22,7 @@ namespace Oz.ActorModule
         private HeelUpdate m_HeelUpdate;
         [SerializeField]
         private SpringManager m_SpringManager;
-        public ScaleSettings ScaleSettings { get; set; }
-
-        // RVA: 0x13F5094
-        public ScaleSettings get_ScaleSettings()
-        {
-            return ScaleSettings;
-        }
-
-        // RVA: 0x13F509C
-        private void set_ScaleSettings(ScaleSettings value)
-        {
-            ScaleSettings = value;
-        }
+        public ScaleSettings ScaleSettings { get; private set; }
 
         // RVA: 0x13F50A4
         public SkeletonSystem(Transform parent, GameObject skeletonPrefab, ScaleSettings scaleSettings)

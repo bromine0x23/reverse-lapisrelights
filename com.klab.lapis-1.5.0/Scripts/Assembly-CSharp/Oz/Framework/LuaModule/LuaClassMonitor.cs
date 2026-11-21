@@ -21,17 +21,6 @@ namespace Oz.Framework.LuaModule
     {
         public static HashSet<string> AliveLuaClass { get; set; }
 
-        // RVA: 0x1400DD4
-        public static HashSet<string> get_AliveLuaClass()
-        {
-            return AliveLuaClass;
-        }
-
-        // RVA: 0x1400E3C
-        private static void set_AliveLuaClass(HashSet<string> value)
-        {
-            AliveLuaClass = value;
-        }
 
         // RVA: 0x1400EA8
         static LuaClassMonitor()

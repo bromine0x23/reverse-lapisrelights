@@ -81,7 +81,6 @@ namespace Oz.Framework
         public class PlayableDirectorEntry
         {
             public ePlayableDirectorEvent eventID;
-            public PlayableDirectorTriggerEvent callback;
 
             // RVA: 0x2EE7EEC
             public PlayableDirectorEntry()

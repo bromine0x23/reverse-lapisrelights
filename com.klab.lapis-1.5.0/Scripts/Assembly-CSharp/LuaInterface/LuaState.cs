@@ -42,176 +42,20 @@ namespace LuaInterface
         private bool beLogGC;
         private bool bInjectionInited;
         private HashSet<Type> missSet;
-        public int ArrayMetatable { get; set; }
-        public int DelegateMetatable { get; set; }
-        public int TypeMetatable { get; set; }
-        public int EnumMetatable { get; set; }
-        public int IterMetatable { get; set; }
-        public int EventMetatable { get; set; }
-        public int PackBounds { get; set; }
-        public int UnpackBounds { get; set; }
-        public int PackRay { get; set; }
-        public int UnpackRay { get; set; }
-        public int PackRaycastHit { get; set; }
-        public int PackTouch { get; set; }
+        public int ArrayMetatable { get; private set; }
+        public int DelegateMetatable { get; private set; }
+        public int TypeMetatable { get; private set; }
+        public int EnumMetatable { get; private set; }
+        public int IterMetatable { get; private set; }
+        public int EventMetatable { get; private set; }
+        public int PackBounds { get; private set; }
+        public int UnpackBounds { get; private set; }
+        public int PackRay { get; private set; }
+        public int UnpackRay { get; private set; }
+        public int PackRaycastHit { get; private set; }
+        public int PackTouch { get; private set; }
         public bool LogGC { get; set; }
         public object Item { get; set; }
-
-        // RVA: 0x18F8E6C
-        public int get_ArrayMetatable()
-        {
-            return ArrayMetatable;
-        }
-
-        // RVA: 0x18F8E74
-        private void set_ArrayMetatable(int value)
-        {
-            ArrayMetatable = value;
-        }
-
-        // RVA: 0x18F8E7C
-        public int get_DelegateMetatable()
-        {
-            return DelegateMetatable;
-        }
-
-        // RVA: 0x18F8E84
-        private void set_DelegateMetatable(int value)
-        {
-            DelegateMetatable = value;
-        }
-
-        // RVA: 0x18F8E8C
-        public int get_TypeMetatable()
-        {
-            return TypeMetatable;
-        }
-
-        // RVA: 0x18F8E94
-        private void set_TypeMetatable(int value)
-        {
-            TypeMetatable = value;
-        }
-
-        // RVA: 0x18F8E9C
-        public int get_EnumMetatable()
-        {
-            return EnumMetatable;
-        }
-
-        // RVA: 0x18F8EA4
-        private void set_EnumMetatable(int value)
-        {
-            EnumMetatable = value;
-        }
-
-        // RVA: 0x18F8EAC
-        public int get_IterMetatable()
-        {
-            return IterMetatable;
-        }
-
-        // RVA: 0x18F8EB4
-        private void set_IterMetatable(int value)
-        {
-            IterMetatable = value;
-        }
-
-        // RVA: 0x18F8EBC
-        public int get_EventMetatable()
-        {
-            return EventMetatable;
-        }
-
-        // RVA: 0x18F8EC4
-        private void set_EventMetatable(int value)
-        {
-            EventMetatable = value;
-        }
-
-        // RVA: 0x18F8ECC
-        public int get_PackBounds()
-        {
-            return PackBounds;
-        }
-
-        // RVA: 0x18F8ED4
-        private void set_PackBounds(int value)
-        {
-            PackBounds = value;
-        }
-
-        // RVA: 0x18F8EDC
-        public int get_UnpackBounds()
-        {
-            return UnpackBounds;
-        }
-
-        // RVA: 0x18F8EE4
-        private void set_UnpackBounds(int value)
-        {
-            UnpackBounds = value;
-        }
-
-        // RVA: 0x18F8EEC
-        public int get_PackRay()
-        {
-            return PackRay;
-        }
-
-        // RVA: 0x18F8EF4
-        private void set_PackRay(int value)
-        {
-            PackRay = value;
-        }
-
-        // RVA: 0x18F8EFC
-        public int get_UnpackRay()
-        {
-            return UnpackRay;
-        }
-
-        // RVA: 0x18F8F04
-        private void set_UnpackRay(int value)
-        {
-            UnpackRay = value;
-        }
-
-        // RVA: 0x18F8F0C
-        public int get_PackRaycastHit()
-        {
-            return PackRaycastHit;
-        }
-
-        // RVA: 0x18F8F14
-        private void set_PackRaycastHit(int value)
-        {
-            PackRaycastHit = value;
-        }
-
-        // RVA: 0x18F8F1C
-        public int get_PackTouch()
-        {
-            return PackTouch;
-        }
-
-        // RVA: 0x18F8F24
-        private void set_PackTouch(int value)
-        {
-            PackTouch = value;
-        }
-
-        // RVA: 0x18F8F2C
-        public bool get_LogGC()
-        {
-            return LogGC;
-        }
-
-        // RVA: 0x18F8F34
-        public void set_LogGC(bool value)
-        {
-            LogGC = value;
-        }
 
         // RVA: 0x18F8F58
         public LuaState()
@@ -3038,7 +2882,7 @@ namespace LuaInterface
         }
 
         // RVA: 0x1908F04
-        private static void .cctor()
+        static LuaState()
         {
             mainState = null;
             injectionState = null;

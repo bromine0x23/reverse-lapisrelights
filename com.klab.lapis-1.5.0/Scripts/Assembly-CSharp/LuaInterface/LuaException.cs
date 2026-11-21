@@ -31,7 +31,7 @@ namespace LuaInterface
         public override string StackTrace { get; }
 
         // RVA: 0x229349C
-        public override string get_StackTrace()
+        public string get_StackTrace()
         {
             return _stack;
         }

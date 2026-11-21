@@ -74,7 +74,7 @@ namespace Oz.Framework.NetworkModule
         public string LuaVersion { get; set; }
         public bool IsLogin { get; }
         public AsyncDuplexStreamingCall<CommonRequest, CommonResponse> BidiCall { get; }
-        public override string EncryptKey { get; set; }
+        public override string EncryptKey { get { return m_protocol.EncryptKey; } set { m_protocol.EncryptKey = value; } }
 
         // RVA: 0x2ED938C
         private string get_ServiceSlugValue()
@@ -88,17 +88,7 @@ namespace Oz.Framework.NetworkModule
             return service_slug_value;
         }
 
-        // RVA: 0x2ED9440
-        public string get_LuaVersion()
-        {
-            return LuaVersion;
-        }
 
-        // RVA: 0x2ED9448
-        public void set_LuaVersion(string value)
-        {
-            LuaVersion = value;
-        }
 
         // RVA: 0x2ED9450
         public void SetDebugTime(long debugTime)
@@ -482,18 +472,6 @@ namespace Oz.Framework.NetworkModule
         public override void SetEncryptType(int type)
         {
             m_protocol.SetEncryptType(type);
-        }
-
-        // RVA: 0x2EDB4A4
-        public override string get_EncryptKey()
-        {
-            return m_protocol.EncryptKey;
-        }
-
-        // RVA: 0x2EDB4C0
-        public override void set_EncryptKey(string value)
-        {
-            m_protocol.EncryptKey = value;
         }
 
         // RVA: 0x2EDB4DC

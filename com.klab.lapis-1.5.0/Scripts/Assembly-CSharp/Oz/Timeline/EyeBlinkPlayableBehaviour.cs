@@ -16,17 +16,6 @@ namespace Oz.Timeline
         public AnimationCurve blinkCurve;
         public EyeBlinkPlayableAsset Asset { get; internal set; }
 
-        // RVA: 0x13D8154
-        public EyeBlinkPlayableAsset get_Asset()
-        {
-            return Asset;
-        }
-
-        // RVA: 0x13D815C
-        internal void set_Asset(EyeBlinkPlayableAsset value)
-        {
-            Asset = value;
-        }
 
         // RVA: 0x13D8164
         public override void OnBehaviourPlay(Playable playable, FrameData info)

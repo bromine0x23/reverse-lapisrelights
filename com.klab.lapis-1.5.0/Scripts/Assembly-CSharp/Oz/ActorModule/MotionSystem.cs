@@ -26,27 +26,13 @@ namespace Oz.ActorModule
         [SerializeField]
         private MotionController m_MotionController;
         [SerializeField]
-        private IKHeadController m_HeadDirection;
-        private IKBodyController m_IKTimelineController;
-        [SerializeField]
         private AnimationSyncSource m_AnimationSyncSource;
         private UnityAction m_OnCrossFadeComp;
         private float m_CrossFadeDuration;
         private float m_DeltaTime;
-        public IKHeadController HeadDirection { get; }
-        public IKBodyController IKTimelineController { get; }
-
-        // RVA: 0x13F3BD8
-        public IKHeadController get_HeadDirection()
-        {
-            return m_HeadDirection;
-        }
-
-        // RVA: 0x13F3BE0
-        public IKBodyController get_IKTimelineController()
-        {
-            return m_IKTimelineController;
-        }
+        [field: SerializeField]
+        public IKHeadController HeadDirection { get; private set; }
+        public IKBodyController IKTimelineController { get; private set; }
 
         // RVA: 0x13F3BE8
         public MotionSystem(ModelSystem modelSystem, MotionController controller)
@@ -70,23 +56,23 @@ namespace Oz.ActorModule
         public void Create()
         {
             m_Animator = m_ModelSystem.AddMissingComponent<Animator>();
-            m_HeadDirection = m_ModelSystem.AddMissingComponent<IKHeadController>();
-            m_HeadDirection.Init(m_Animator);
-            m_IKTimelineController = m_ModelSystem.AddMissingComponent<IKBodyController>();
-            m_IKTimelineController.Init(m_Animator);
+            HeadDirection = m_ModelSystem.AddMissingComponent<IKHeadController>();
+            HeadDirection.Init(m_Animator);
+            IKTimelineController = m_ModelSystem.AddMissingComponent<IKBodyController>();
+            IKTimelineController.Init(m_Animator);
             EnableAnimatorController(true);
         }
 
         // RVA: 0x13F3E34
         public void Destroy()
         {
-            if (m_IKTimelineController != null)
+            if (IKTimelineController != null)
             {
-                Object.Destroy(m_IKTimelineController);
+                Object.Destroy(IKTimelineController);
             }
-            if (m_HeadDirection != null)
+            if (HeadDirection != null)
             {
-                Object.Destroy(m_HeadDirection);
+                Object.Destroy(HeadDirection);
             }
             if (m_Animator != null)
             {
@@ -115,18 +101,18 @@ namespace Oz.ActorModule
         // RVA: 0x13F3FE0
         public void FaceAt(Transform transform, float weight = 1f)
         {
-            if (m_HeadDirection != null)
+            if (HeadDirection != null)
             {
-                m_HeadDirection.SetLookAtTarget(transform, weight);
+                HeadDirection.SetLookAtTarget(transform, weight);
             }
         }
 
         // RVA: 0x13F4098
         public void FaceAtImmediate(Transform transform, float weight = 1f)
         {
-            if (m_HeadDirection != null)
+            if (HeadDirection != null)
             {
-                m_HeadDirection.SetLookAtTargetImmediate(transform, 1f);
+                HeadDirection.SetLookAtTargetImmediate(transform, 1f);
             }
         }
 

@@ -15,7 +15,6 @@ namespace Oz.Framework
         /// 事件回调入口。元数据中没有 IL 方法体（RVA 为空），
         /// 由派生类型重写实现。
         /// </summary>
-        // [无 IL 方法体]
         public virtual void Callback(BaseEventData baseEventData)
         {
         }

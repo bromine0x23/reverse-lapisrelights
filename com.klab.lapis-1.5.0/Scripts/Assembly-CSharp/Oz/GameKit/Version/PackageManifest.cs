@@ -20,48 +20,17 @@ namespace Oz.GameKit.Version
 {
     public class PackageManifest : IPackageManifest
     {
-        private string m_Version;
         private Dictionary<string, int> m_PackageName2Index;
         private List<IPackageInfo> m_PackageInfos;
         private Queue<int> m_EmptyIndexQueue;
-        public string AppVersion { get; set; }
-        public ulong ResVersion { get; set; }
+        public string AppVersion { get; private set; }
+        public ulong ResVersion { get; private set; }
         public string Version { get; set; }
-
-        // RVA: 0x187F950
-        public string get_AppVersion()
-        {
-            return AppVersion;
-        }
-
-        // RVA: 0x187F958
-        private void set_AppVersion(string value)
-        {
-            AppVersion = value;
-        }
-
-        // RVA: 0x187F960
-        public ulong get_ResVersion()
-        {
-            return ResVersion;
-        }
-
-        // RVA: 0x187F968
-        private void set_ResVersion(ulong value)
-        {
-            ResVersion = value;
-        }
-
-        // RVA: 0x187F970
-        public string get_Version()
-        {
-            return m_Version;
-        }
 
         // RVA: 0x187F978
         private void set_Version(string value)
         {
-            m_Version = value;
+            m__Version = value;
             ResVersion = ulong.Parse(value.Split('-')[0]);
         }
 
@@ -88,7 +57,7 @@ namespace Oz.GameKit.Version
         // RVA: 0x187FBEC
         public PackageManifest Clone(int addedVersion = 0)
         {
-            string[] parts = m_Version.Split('-');
+            string[] parts = Version.Split('-');
             long version = long.Parse(parts[0]) + addedVersion;
             parts[0] = version.ToString();
 
@@ -125,7 +94,7 @@ namespace Oz.GameKit.Version
 
             XmlElement versionElement = document.CreateElement("Version");
             versionElement.SetAttribute("App", AppVersion);
-            versionElement.SetAttribute("Res", m_Version);
+            versionElement.SetAttribute("Res", Version);
             document.AppendChild(versionElement);
 
             XmlElement infosElement = document.CreateElement("Infos");

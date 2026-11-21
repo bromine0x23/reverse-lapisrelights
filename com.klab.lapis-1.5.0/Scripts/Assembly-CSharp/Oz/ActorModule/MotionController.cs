@@ -15,78 +15,39 @@ namespace Oz.ActorModule
 {
     public class MotionController
     {
-        [SerializeField]
-        private RuntimeAnimatorController m_RuntimeAnimatorController;
-        [SerializeField]
-        private StringFloatDictionary m_NameToClipLength;
-        [SerializeField]
-        private StringAnimationClipDictionary m_OverrideClips;
-        public AnimatorOverrideController OverrideAnimatorController { get; set; }
-        public RuntimeAnimatorController RuntimeAnimatorController { get; }
-        public StringFloatDictionary NameToClipLength { get; }
-        public StringAnimationClipDictionary OverrideClips { get; set; }
-
-        // RVA: 0x13F3678
-        public AnimatorOverrideController get_OverrideAnimatorController()
-        {
-            return OverrideAnimatorController;
-        }
-
-        // RVA: 0x13F3680
-        private void set_OverrideAnimatorController(AnimatorOverrideController value)
-        {
-            OverrideAnimatorController = value;
-        }
-
-        // RVA: 0x13F3688
-        public RuntimeAnimatorController get_RuntimeAnimatorController()
-        {
-            return m_RuntimeAnimatorController;
-        }
-
-        // RVA: 0x13F3690
-        public StringFloatDictionary get_NameToClipLength()
-        {
-            return m_NameToClipLength;
-        }
-
-        // RVA: 0x13F3698
-        public StringAnimationClipDictionary get_OverrideClips()
-        {
-            return m_OverrideClips;
-        }
-
-        // RVA: 0x13F36A0
-        private void set_OverrideClips(StringAnimationClipDictionary value)
-        {
-            m_OverrideClips = value;
-        }
+        public AnimatorOverrideController OverrideAnimatorController { get; private set; }
+        [field: SerializeField]
+        public RuntimeAnimatorController RuntimeAnimatorController { get; private set; }
+        [field: SerializeField]
+        public StringFloatDictionary NameToClipLength { get; private set; }
+        [field: SerializeField]
+        public StringAnimationClipDictionary OverrideClips { get; private set; }
 
         // RVA: 0x13F36A8
         public MotionController(
             RuntimeAnimatorController controllerAsset,
             Dictionary<string, AssetRef> overrideClips)
         {
-            m_RuntimeAnimatorController = controllerAsset;
+            RuntimeAnimatorController = controllerAsset;
             OverrideAnimatorController = new AnimatorOverrideController(controllerAsset);
-            m_NameToClipLength = new StringFloatDictionary();
-            m_OverrideClips = new StringAnimationClipDictionary();
+            NameToClipLength = new StringFloatDictionary();
+            OverrideClips = new StringAnimationClipDictionary();
 
             if (overrideClips != null)
             {
                 foreach (string key in overrideClips.Keys)
                 {
                     AnimationClip clip = overrideClips[key].m_Object as AnimationClip;
-                    m_OverrideClips.Add(key, clip);
+                    OverrideClips.Add(key, clip);
                     OverrideAnimatorController[key] = clip;
 
                     if (clip != null)
                     {
-                        m_NameToClipLength[key] = clip.length;
+                        NameToClipLength[key] = clip.length;
                     }
                     else
                     {
-                        m_NameToClipLength[key] = 0f;
+                        NameToClipLength[key] = 0f;
                     }
                 }
             }
@@ -96,7 +57,7 @@ namespace Oz.ActorModule
         public float GetClipLength(string name)
         {
             float value = 0f;
-            if (!m_NameToClipLength.TryGetValue(name, out value))
+            if (!NameToClipLength.TryGetValue(name, out value))
             {
                 return 0f;
             }
@@ -107,7 +68,7 @@ namespace Oz.ActorModule
         public string[] GetAllStateName()
         {
             List<string> names = new List<string>();
-            foreach (KeyValuePair<string, float> pair in m_NameToClipLength)
+            foreach (KeyValuePair<string, float> pair in NameToClipLength)
             {
                 if (pair.Value != 0f)
                 {

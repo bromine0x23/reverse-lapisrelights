@@ -21,8 +21,7 @@ namespace LuaInterface
     public struct LuaByteBuffer
     {
         public byte[] buffer;
-        public int Length { get; set; }
-
+        public int Length { get; private set; }
         // RVA: 0x2288F5C
         public LuaByteBuffer(IntPtr source, int len)
         {
@@ -58,16 +57,6 @@ namespace LuaInterface
             return new LuaByteBuffer(stream);
         }
 
-        // RVA: 0x22890B4
-        public int get_Length()
-        {
-            return Length;
-        }
 
-        // RVA: 0x22890BC
-        private void set_Length(int value)
-        {
-            Length = value;
-        }
     }
 }
