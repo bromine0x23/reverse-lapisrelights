@@ -7,7 +7,7 @@
 using Oz.GameFramework.Runtime;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>退出流程：交由 SDK 收尾。</summary>
     public class StateQuit : State<eProcedure>
     {
@@ -28,4 +28,4 @@ namespace Oz.GameKit.Version
             }
         }
     }
-}}
+}

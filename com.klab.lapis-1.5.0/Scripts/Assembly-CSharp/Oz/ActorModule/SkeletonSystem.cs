@@ -4,7 +4,7 @@
 //  来源：libil2cpp.so (ARM64) Hex-Rays 伪代码 + Il2CppDumper 元数据
 //        在 ModelSystem 基础上管理额外骨骼、SpringBone 与脚跟修正；
 //        Merge/MergeBones/FindChildExtraBones/SetupSpringParameter/
-//        ClearSpringParameter 仍待还原。
+//        ClearSpringParameter 均已按反汇编还原。
 // =============================================================================
 
 using System.Collections.Generic;

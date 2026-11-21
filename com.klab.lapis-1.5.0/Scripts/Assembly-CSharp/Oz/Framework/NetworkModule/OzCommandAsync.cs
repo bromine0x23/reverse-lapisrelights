@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>异步命令标记基类。</summary>
     public abstract class OzCommandAsync : OzCommandBase
     {
@@ -15,4 +15,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

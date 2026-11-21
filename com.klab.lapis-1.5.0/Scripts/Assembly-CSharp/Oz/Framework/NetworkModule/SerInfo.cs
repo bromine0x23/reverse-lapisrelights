@@ -7,7 +7,7 @@
 using UnityEngine;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>登录/服务器信息响应。</summary>
     public class SerInfo
     {
@@ -29,4 +29,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

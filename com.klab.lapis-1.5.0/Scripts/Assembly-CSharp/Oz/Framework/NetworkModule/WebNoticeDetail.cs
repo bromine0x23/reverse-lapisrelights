@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>网页公告条目。</summary>
     public class WebNoticeDetail
     {
@@ -22,4 +22,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

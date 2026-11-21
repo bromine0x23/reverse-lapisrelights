@@ -10,7 +10,7 @@ using ICSharpCode.SharpZipLib.GZip;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>启动清单（manifest.xml 的根对象）。</summary>
     public class BootInfo
     {
@@ -34,4 +34,4 @@ namespace Oz.GameKit.Version
             }
         }
     }
-}}
+}

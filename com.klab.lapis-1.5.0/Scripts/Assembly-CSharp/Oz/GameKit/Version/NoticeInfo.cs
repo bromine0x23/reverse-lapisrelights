@@ -7,7 +7,7 @@
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>启动公告条目。</summary>
     public class NoticeInfo
     {
@@ -27,4 +27,4 @@ namespace Oz.GameKit.Version
         {
         }
     }
-}}
+}

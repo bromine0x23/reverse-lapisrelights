@@ -7,7 +7,7 @@
 using UnityEngine;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>单个服务器条目。</summary>
     public class SerList
     {
@@ -29,4 +29,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>某个平台（android/ios）的启动配置。</summary>
     public class PlatformInfo
     {
@@ -36,4 +36,4 @@ namespace Oz.GameKit.Version
         {
         }
     }
-}}
+}

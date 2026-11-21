@@ -6,7 +6,7 @@
 
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>版本相关常量。</summary>
     public static class VersionConst
     {
@@ -14,4 +14,4 @@ namespace Oz.GameKit.Version
         public const string VERSION_FILE = "manifest.xml";
         public const string VERSION_FILE_FULL = "manifest_full.xml";
     }
-}}
+}

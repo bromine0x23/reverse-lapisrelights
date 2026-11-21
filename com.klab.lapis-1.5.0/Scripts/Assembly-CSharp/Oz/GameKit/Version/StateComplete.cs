@@ -7,7 +7,7 @@
 using Oz.GameFramework.Runtime;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>流程终点：把控制权交回 <see cref="VersionControl.OnComplete"/>。</summary>
     public class StateComplete : State<eProcedure>
     {
@@ -25,4 +25,4 @@ namespace Oz.GameKit.Version
             m_VersionControl.OnComplete();
         }
     }
-}}
+}

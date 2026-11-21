@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>待发送的原始消息。</summary>
     public class PackData
     {
@@ -18,4 +18,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

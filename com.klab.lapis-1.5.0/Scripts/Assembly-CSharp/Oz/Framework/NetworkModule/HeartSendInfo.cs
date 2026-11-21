@@ -7,7 +7,7 @@
 using UnityEngine;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>心跳发送计划：到期后把下次发送时刻推后 <see cref="Delay"/> 秒。</summary>
     public class HeartSendInfo
     {
@@ -47,4 +47,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

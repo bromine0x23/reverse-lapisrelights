@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>网络命令基类：保存消息携带的 <see cref="Channel"/> 供子类使用。</summary>
     public class OzCommandBase
     {
@@ -29,4 +29,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

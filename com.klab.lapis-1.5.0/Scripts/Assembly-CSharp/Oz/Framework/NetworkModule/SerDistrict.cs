@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>服务器分区。</summary>
     public class SerDistrict
     {
@@ -29,4 +29,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

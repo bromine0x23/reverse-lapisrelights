@@ -8,7 +8,7 @@ using System;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>补丁包条目（按版本号排序）。</summary>
     public class PatchInfo : IComparable<PatchInfo>
     {
@@ -28,4 +28,4 @@ namespace Oz.GameKit.Version
         {
         }
     }
-}}
+}

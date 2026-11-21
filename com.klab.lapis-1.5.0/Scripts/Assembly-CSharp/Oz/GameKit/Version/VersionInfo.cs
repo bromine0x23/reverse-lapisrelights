@@ -9,7 +9,7 @@ using System.Linq;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>某个 app 版本对应的补丁列表。</summary>
     public class VersionInfo
     {
@@ -44,4 +44,4 @@ namespace Oz.GameKit.Version
         {
         }
     }
-}}
+}

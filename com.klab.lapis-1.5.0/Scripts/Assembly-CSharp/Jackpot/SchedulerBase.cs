@@ -1,7 +1,7 @@
 // =============================================================================
 //  Lapis Re:Lights 1.5.0 — Assembly-CSharp.dll
 //  Jackpot.SchedulerBase
-//  来源：Il2CppDumper 元数据（签名精确）；方法体待逐个还原，见 TODO.md
+//  来源：Il2CppDumper 元数据（签名精确）+ libil2cpp.so 反汇编（方法体）
 // =============================================================================
 
 using System;
@@ -114,12 +114,14 @@ namespace Jackpot
         }
 
         // RVA: 0x1EA4B4C
+        // 反汇编确认为基类原实现：直接抛出，派生类必须覆写。
         protected virtual void Reset()
         {
                         throw new NotImplementedException();
         }
 
         // RVA: 0x1EA4BAC
+        // 反汇编确认为基类原实现：直接抛出，派生类必须覆写。
         protected virtual void Work(float delta)
         {
                         throw new NotImplementedException();

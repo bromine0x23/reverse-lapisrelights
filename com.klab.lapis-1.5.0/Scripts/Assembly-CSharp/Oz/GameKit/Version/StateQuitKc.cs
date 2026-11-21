@@ -8,7 +8,7 @@ using Oz.GameFramework.Runtime;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>KC 渠道退出：直接结束进程。</summary>
     public class StateQuitKc : State<eProcedure>
     {
@@ -27,4 +27,4 @@ namespace Oz.GameKit.Version
             Application.Quit();
         }
     }
-}}
+}

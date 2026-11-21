@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>服务器列表响应（分区 → 服务器）。</summary>
     public class SerData
     {
@@ -28,4 +28,4 @@ namespace Oz.Framework.NetworkModule
         {
         }
     }
-}}
+}

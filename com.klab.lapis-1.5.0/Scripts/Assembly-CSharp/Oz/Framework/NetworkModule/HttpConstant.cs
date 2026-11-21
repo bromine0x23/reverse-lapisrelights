@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>HTTP 头字段名常量。</summary>
     public class HttpConstant
     {
@@ -39,4 +39,4 @@ namespace Oz.Framework.NetworkModule
             X_APP_VIRTUAL_UT = "x-app-virtual-ut";
         }
     }
-}}
+}

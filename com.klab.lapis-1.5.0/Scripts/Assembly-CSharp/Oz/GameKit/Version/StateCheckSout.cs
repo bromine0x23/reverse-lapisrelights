@@ -8,7 +8,7 @@ using Oz.GameFramework.Runtime;
 using UnityEngine;
 
 namespace Oz.GameKit.Version
-{{
+{
     /// <summary>Sout（客户端日志/验证）流程占位状态，当前版本无逻辑。</summary>
     public class StateCheckSout : State<eProcedure>
     {
@@ -31,4 +31,4 @@ namespace Oz.GameKit.Version
         {
         }
     }
-}}
+}

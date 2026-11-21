@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>服务器时间与本地发送时刻，用于校正时钟。</summary>
     public class ClockInfo
     {
@@ -20,4 +20,4 @@ namespace Oz.Framework.NetworkModule
             SendTime = sendTime;
         }
     }
-}}
+}

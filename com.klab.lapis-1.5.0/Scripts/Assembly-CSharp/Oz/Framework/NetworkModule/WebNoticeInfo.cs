@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>网页公告列表响应。</summary>
     public class WebNoticeInfo
     {
@@ -22,4 +22,4 @@ namespace Oz.Framework.NetworkModule
             data = new List<WebNoticeDetail>();
         }
     }
-}}
+}

@@ -6,7 +6,7 @@
 
 
 namespace Oz.Framework.NetworkModule
-{{
+{
     /// <summary>维护/黑名单公告。</summary>
     public class SerNotice
     {
@@ -24,4 +24,4 @@ namespace Oz.Framework.NetworkModule
             desc = "";
         }
     }
-}}
+}
