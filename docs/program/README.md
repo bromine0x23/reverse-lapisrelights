@@ -9,17 +9,18 @@
 关键库（APK 内共 24 个库 × 2 套 ABI，完整清单见 [APK.md](APK.md)）：
 ```
 lib\
-  arm64-v8a\           # 用于64位ARM架构
-    libil2cpp.so       # 游戏主要代码
-    libtolua.so        # 用于处理 LuaJit 脚本
-    libklbsqlite3.so   # 用于处理数据库
-    libLapis.so        # AssetBundle 流解密
-    libUnityPlugin.so  # IL2CPP 元数据解密插件（game.dat）
-    libjackpot-core.so # 安全校验与反作弊
-    libklabniceway.so  # DEX 脱壳、ClassLoader 替换与反调试
-    libassistant1.so   # 完整性看门狗
-    libassistant2.so   # 完整性看门狗
-  armeabi-v7a\         # 用于32位ARM架构
+  arm64-v8a\            # 用于64位ARM架构
+    libil2cpp.so        # 游戏主要代码
+    libtolua.so         # 用于处理 LuaJit 脚本
+    libklbsqlite3.so    # 用于处理数据库
+    libLapis.so         # AssetBundle 流解密
+    libUnityPlugin.so   # IL2CPP 元数据解密插件（game.dat）
+    libjackpot-core.so  # 安全校验与反作弊
+    libklabniceway.so   # DEX 脱壳、ClassLoader 替换与反调试
+    libassistant1.so    # 完整性看门狗
+    libassistant2.so    # 完整性看门狗
+    libAkSoundEngine.so # Wwise 2019.2.5 音频引擎
+  armeabi-v7a\          # 用于32位ARM架构
 ```
 
 * [libil2cpp.so](libil2cpp.so.md)
@@ -31,6 +32,7 @@ lib\
 * [libklabniceway.so](libklabniceway.so.md)
 * [libassistant1.so](libassistant1.so.md)
 * [libassistant2.so](libassistant2.so.md)
+* [libAkSoundEngine.so](libAkSoundEngine.so.md)
 
 ## 二进制库加密
 
