@@ -2881,6 +2881,60 @@ namespace LuaInterface
                         StackTraits<nil>.Init(ToLua.Push, null, null);
         }
 
+        // RVA: 0x1908578
+        public override int GetHashCode()
+        {
+            return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(this);
+        }
+
+        // RVA: 0x1908580
+        public override bool Equals(object o)
+        {
+            if (o == null)
+            {
+                return L == IntPtr.Zero;
+            }
+
+            LuaState luaState = o as LuaState;
+            if (luaState == null)
+            {
+                return false;
+            }
+            if (luaState.L != L)
+            {
+                return false;
+            }
+            return L != IntPtr.Zero;
+        }
+
+        // RVA: 0x18F9430
+        public static bool operator ==(LuaState a, LuaState b)
+        {
+            if (ReferenceEquals(a, b))
+            {
+                return true;
+            }
+            if (ReferenceEquals(a, null))
+            {
+                return b.L == IntPtr.Zero;
+            }
+            if (ReferenceEquals(b, null))
+            {
+                return a.L == IntPtr.Zero;
+            }
+            if (a.L != b.L)
+            {
+                return false;
+            }
+            return a.L != IntPtr.Zero;
+        }
+
+        // RVA: 0x1900B60
+        public static bool operator !=(LuaState a, LuaState b)
+        {
+            return !(a == b);
+        }
+
         // RVA: 0x1908F04
         static LuaState()
         {

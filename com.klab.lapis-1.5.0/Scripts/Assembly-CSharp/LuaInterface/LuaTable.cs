@@ -19,90 +19,93 @@ namespace LuaInterface
 {
     public class LuaTable : LuaBaseRef
     {
-        public object Item { get; set; }
-        public object Item { get; set; }
-        public int Length { get; }
+        public int Length
+        {
+            // RVA: 0x190D214
+            get
+            {
+                luaState.Push(this);
+                int n = luaState.LuaObjLen(-1);
+                luaState.LuaPop(1);
+                return n;
+            }
+        }
+
+        public object this[string key]
+        {
+            // RVA: 0x190CC5C
+            get
+            {
+                int top = luaState.LuaGetTop();
+                try
+                {
+                    luaState.Push(this);
+                    luaState.Push(key);
+                    luaState.LuaGetTable(top + 1);
+                    return luaState.ToVariant(top + 1);
+                }
+                finally
+                {
+                    luaState.LuaSetTop(top);
+                }
+            }
+            // RVA: 0x190CDD8
+            set
+            {
+                int top = luaState.LuaGetTop();
+                try
+                {
+                    luaState.Push(this);
+                    luaState.Push(key);
+                    luaState.PushVariant(value);
+                    luaState.LuaSetTable(top + 1);
+                }
+                finally
+                {
+                    luaState.LuaSetTop(top);
+                }
+            }
+        }
+
+        public object this[int key]
+        {
+            // RVA: 0x190CF4C
+            get
+            {
+                int top = luaState.LuaGetTop();
+                try
+                {
+                    luaState.Push(this);
+                    luaState.LuaRawGetI(top + 1, key);
+                    return luaState.ToVariant(top + 1);
+                }
+                finally
+                {
+                    luaState.LuaSetTop(top);
+                }
+            }
+            // RVA: 0x190D0B4
+            set
+            {
+                int top = luaState.LuaGetTop();
+                try
+                {
+                    luaState.Push(this);
+                    luaState.PushVariant(value);
+                    luaState.LuaRawSetI(top + 1, key);
+                }
+                finally
+                {
+                    luaState.LuaSetTop(top);
+                }
+            }
+        }
 
         // RVA: 0x19036C0
-        public void .ctor(int reference, LuaState state)
+        public LuaTable(int reference, LuaState state)
         {
             this.reference = reference;
             this.luaState = state;
-        }
-
-        // RVA: 0x190CC5C
-        public object get_Item(string key)
-        {
-            int top = luaState.LuaGetTop();
-            try
-            {
-                luaState.Push(this);
-                luaState.Push(key);
-                luaState.LuaGetTable(top + 1);
-                return luaState.ToVariant(top + 1);
-            }
-            finally
-            {
-                luaState.LuaSetTop(top);
-            }
-        }
-
-        // RVA: 0x190CDD8
-        public void set_Item(string key, object value)
-        {
-            int top = luaState.LuaGetTop();
-            try
-            {
-                luaState.Push(this);
-                luaState.Push(key);
-                luaState.PushVariant(value);
-                luaState.LuaSetTable(top + 1);
-            }
-            finally
-            {
-                luaState.LuaSetTop(top);
-            }
-        }
-
-        // RVA: 0x190CF4C
-        public object get_Item(int key)
-        {
-            int top = luaState.LuaGetTop();
-            try
-            {
-                luaState.Push(this);
-                luaState.LuaRawGetI(top + 1, key);
-                return luaState.ToVariant(top + 1);
-            }
-            finally
-            {
-                luaState.LuaSetTop(top);
-            }
-        }
-
-        // RVA: 0x190D0B4
-        public void set_Item(int key, object value)
-        {
-            int top = luaState.LuaGetTop();
-            try
-            {
-                luaState.Push(this);
-                luaState.PushVariant(value);
-                luaState.LuaRawSetI(top + 1, key);
-            }
-            finally
-            {
-                luaState.LuaSetTop(top);
-            }
-        }
-
-        // RVA: 0x190D214
-        public int get_Length()
-        {
-            luaState.Push(this);
-            int n = luaState.LuaObjLen(-1);
-            luaState.LuaPop(1);
-            return n;
         }
 
         public T RawGetIndex<T>(int index)

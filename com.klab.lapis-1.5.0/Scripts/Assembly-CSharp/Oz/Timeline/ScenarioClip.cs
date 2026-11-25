@@ -1,31 +1,31 @@
 // =============================================================================
 //  Lapis Re:Lights 1.5.0 — Assembly-CSharp.dll
 //  Oz.Timeline.ScenarioClip
-//  来源：libil2cpp.so (ARM64) Hex-Rays 伪代码 + Il2CppDumper 元数据
-//        CreatePlayable: ScriptPlayable<ScenarioBehaviour>.Create(graph, 0) + SetContext
-//        get_clipCaps = 8 (ClipCaps.ClipIn)
+//  来源：Il2CppDumper 元数据（签名精确）+ libil2cpp.so 反汇编（方法体）
 // =============================================================================
 
+using System;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using TimeLine;
 
 namespace Oz.Timeline
 {
+    [Serializable]
     public class ScenarioClip : Clip
     {
-        // RVA: 0x13DBEF0
-        public ClipCaps get_clipCaps()
+        public override ClipCaps clipCaps
         {
-            return ClipCaps.ClipIn;
+            // RVA: 0x13DBEF0
+            get { return ClipCaps.ClipIn; }
         }
 
         // RVA: 0x13DBEF8
         public override Playable CreatePlayable(PlayableGraph graph, GameObject go)
         {
-            ScriptPlayable<ScenarioBehaviour> playable = ScriptPlayable<ScenarioBehaviour>.Create(graph, 0);
-            ScenarioBehaviour behaviour = playable.GetBehaviour();
-            SetContext(behaviour);
+            ScriptPlayable<ScenarioBehaviour> playable = ScriptPlayable<ScenarioBehaviour>.Create(graph, go, 0);
+            SetContext(playable.GetBehaviour());
             return playable;
         }
 
