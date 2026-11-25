@@ -341,7 +341,7 @@ Billing、AppsFlyer、FMOD；**游戏自有仅 1 个**：`com.klab.jackpot.Jackp
 |-------------------------------|-------------------------|-----------------------------------------------------------------------------------|
 | `libil2cpp.so`                | 69,005,904 / 55,628,352 | 游戏 IL2CPP AOT 代码                                                              |
 | `libunity.so`                 | 17,913,576 / 13,530,112 | Unity 引擎                                                                        |
-| `libmain.so`                  | 6,424 / 18,468          | Unity JNI 引导（`JNI_OnLoad`）                                                    |
+| `libmain.so`                  | 6,424 / 18,468          | Unity JNI 引导（`JNI_OnLoad`）；见 [libmain.so.md](libmain.so.md)                  |
 | `lib_burst_generated.so`      | 17,272 / 15,492         | Unity Burst 生成代码                                                              |
 | `libgrpc_csharp_ext.so`       | 23,694,960 / 21,967,400 | gRPC C# 原生扩展                                                                  |
 | `libAkSoundEngine.so`         | 4,239,504 / 2,917,184   | Wwise 音频引擎                                                                    |

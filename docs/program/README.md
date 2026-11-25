@@ -11,6 +11,7 @@
 lib\
   arm64-v8a\            # 用于64位ARM架构
     libil2cpp.so        # 游戏主要代码
+    libmain.so          # Unity JNI 引导（libunity.so 装载）
     libtolua.so         # 用于处理 LuaJit 脚本
     libklbsqlite3.so    # 用于处理数据库
     libLapis.so         # AssetBundle 流解密
@@ -24,6 +25,7 @@ lib\
 ```
 
 * [libil2cpp.so](libil2cpp.so.md)
+* [libmain.so](libmain.so.md)
 * [libtolua.so](libtolua.so.md)
 * [libklbsqlite3.so](libklbsqlite3.so.md)
 * [libLapis.so](libLapis.so.md)
